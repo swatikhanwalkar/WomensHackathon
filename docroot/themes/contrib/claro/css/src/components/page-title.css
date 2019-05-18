@@ -1,0 +1,14 @@
+/**
+ * @file
+ * Page title.
+ */
+.block-page-title-block {
+  margin-bottom: var(--space-l);
+}
+
+.page-title {
+  display: inline-block;
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
+}

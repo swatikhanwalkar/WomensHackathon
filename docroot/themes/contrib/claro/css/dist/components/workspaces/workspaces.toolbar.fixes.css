@@ -1,0 +1,34 @@
+/**
+ * @file
+ * Workspace toolbar tab fixes for Claro.
+ *
+ * @todo remove when https://drupal.org/node/3045148 is fixed.
+ */
+
+.toolbar .toolbar-bar .workspaces-toolbar-tab,
+[dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab {
+  float: none;
+  color: #000;
+}
+.toolbar-oriented .toolbar-bar .workspaces-toolbar-tab {
+  float: right;
+}
+[dir="rtl"] .toolbar-oriented .toolbar-bar .workspaces-toolbar-tab {
+  float: left;
+}
+
+@media (max-width: 766px) {
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace {
+    width: 100%;
+    max-width: none; /* was 8em */
+  }
+}
+
+@media (min-width: 16.5em) {
+  .toolbar .toolbar-bar .workspaces-toolbar-tab {
+    float: right;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab {
+    float: left;
+  }
+}

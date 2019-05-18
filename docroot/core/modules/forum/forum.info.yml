@@ -1,0 +1,18 @@
+name: Forum
+type: module
+description: 'Provides discussion forums.'
+dependencies:
+  - drupal:node
+  - drupal:history
+  - drupal:taxonomy
+  - drupal:comment
+  - drupal:options
+package: Core
+version: VERSION
+core: 8.x
+configure: forum.overview
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

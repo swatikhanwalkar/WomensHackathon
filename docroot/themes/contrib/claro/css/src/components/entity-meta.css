@@ -1,0 +1,41 @@
+/**
+ * Entity meta settings.
+ */
+.entity-meta {
+  background-color: #edede8;
+  border-left: 1px solid #bfbfbf;
+  border-right: 1px solid #bfbfbf;
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.entity-meta__header {
+  background-color: #fcfcfa;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf;
+  padding: 1em 1.5em;
+  border-radius: 3px 3px 0 0;
+}
+.entity-meta__title {
+  font-size: 1.231em;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #fff;
+  margin: 0.25em 0;
+}
+.entity-meta__header .form-item {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+.entity-meta__last-saved {
+  font-style: italic; /* As-designed, but really: why is this italic? */
+}
+
+/**
+ * Hide JS summary from the details polyfill to make it consistent with native
+ * details elements.
+ *
+ * @todo Consider removing this after https://www.drupal.org/node/2493957 has
+ *   been solved.
+ */
+.entity-meta .claro-details .summary {
+  display: none;
+}

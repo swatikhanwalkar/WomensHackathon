@@ -1,0 +1,13 @@
+name: System
+type: module
+description: 'Handles general site configuration for administrators.'
+package: Core
+version: VERSION
+core: 8.x
+required: true
+configure: system.admin_config_system
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

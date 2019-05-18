@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Toolbar module overrides for Claro.
+ */
+
+/* Make active ToolBar tray statically positioned if the toolbar isn't fixed. */
+.toolbar .toolbar-tray-vertical.is-active {
+  height: auto;
+  overflow: visible;
+  position: static;
+}
+.toolbar-oriented .toolbar-tray-vertical.is-active {
+  position: absolute; /* Make tray 'attached' to the toolbar and not the page */
+  z-index: 503; /* Fix: overflown Toolbar tabs may overlap the tray */
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Add some box-shadow */
+}
+.toolbar-fixed .toolbar .toolbar-tray-vertical {
+  -webkit-box-shadow: none;
+  box-shadow: none; /* Remove box-shadow */
+}

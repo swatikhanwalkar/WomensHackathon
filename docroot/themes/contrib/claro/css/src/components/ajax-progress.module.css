@@ -1,0 +1,117 @@
+/**
+ * @file
+ * Throbber.
+ */
+
+.ajax-progress {
+  display: inline-block;
+}
+
+/**
+ * Progress bar.
+ */
+.ajax-progress-bar {
+  width: 13em;
+  padding: 0 0.3125rem; /* 0 5px */
+}
+
+/**
+ * Throbber.
+ */
+.ajax-progress-throbber {
+  position: relative;
+  display: inline-block;
+  min-width: 1.875rem; /* 30px */
+  min-height: 1.5rem; /* 24px */
+  padding: 0;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+.ajax-progress-throbber::before,
+.ajax-progress-fullscreen::before {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 1.25rem; /* 20px */
+  height: 1.25rem;
+  margin: -0.6875rem 0; /* -11px, a bit bigger than the half of 20px */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' %3E%3Cellipse fill='none' ry='4' rx='4' cy='5' cx='5' stroke='%23004adc' stroke-width='1' stroke-dashoffset='6.125' stroke-dasharray='25' /%3E%3C/svg%3E") 50% 50% no-repeat;
+  background-size: 1.25rem 1.25rem;
+  animation: claro-throbber 0.75s linear infinite;
+  content: "";
+}
+[dir="rtl"] .ajax-progress-throbber::before,
+[dir="rtl"] .ajax-progress-fullscreen::before {
+  animation-direction: reverse;
+}
+[dir="rtl"] .ajax-progress-throbber::before {
+  right: 0.3125rem; /* 5px */
+  left: auto;
+}
+
+.ajax-progress-throbber .message {
+  display: inline-block;
+  padding-right: 0.3125rem; /* 5px */
+  padding-left: 1.875rem; /* 30px */
+  font-size: var(--font-size-label);
+  line-height: var(--line-height); /* because inherited is 0 */
+  vertical-align: middle;
+}
+[dir="rtl"] .ajax-progress-throbber .message {
+  padding-right: 1.875rem; /* 30px */
+  padding-left: 0.3125rem; /* 5px */
+}
+
+/**
+ * Full screen throbber.
+ */
+.ajax-progress-fullscreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 3.5rem; /* 56px */
+  height: 3.5rem;
+  margin: -1.75rem;
+  border: var(--size-input-border) solid var(--color-jui-dropdown-border);
+  border-radius: 3.5rem;
+  box-shadow: 0 0.25rem 0.625rem var(--color-jui-dropdown-shadow);
+  background: var(--color-white);
+  box-sizing: border-box;
+  z-index: 1000;
+}
+/* Overrides properties from merged rule of throbber. */
+.ajax-progress-fullscreen::before {
+  left: 50%;
+  width: 1.875rem; /* 30px */
+  height: 1.875rem; /* 30px */
+  margin: -0.9375rem;
+  background-size: 1.875rem 1.875rem;
+}
+/**
+ * IE11 and Edge are not handling these rem values smart enought.
+ */
+/* This is a fix for ie11... */
+/* stylelint-disable-next-line selector-type-no-unknown */
+_:-ms-fullscreen,
+.ajax-progress-fullscreen::before {
+  width: 30px;
+  height: 30px;
+  margin: -15px;
+  background-size: 30px 30px;
+}
+/* ..and this is a fix for edge. */
+/* stylelint-disable-next-line selector-type-no-unknown */
+_:-ms-lang(x),
+.ajax-progress-fullscreen::before {
+  width: 30px;
+  height: 30px;
+  margin: -15px;
+  background-size: 30px 30px;
+}
+
+@keyframes claro-throbber {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,384 @@
+/**
+ * @file
+ * Toolbar theme extensions for Claro.
+ */
+
+/**
+ * Change font size.
+ * Selector from toolbar.module.css.
+ */
+#toolbar-administration {
+  font-size: 0.889rem;
+}
+
+/******************************************************************************
+ *
+ * ToolBar bar.
+ *
+ * This is the topper bar with the dark background.
+ ******************************************************************************/
+
+.toolbar .toolbar-bar {
+  background: #222330;
+  color: #fff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+[dir="rtl"] .toolbar .toolbar-bar {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/******************************************************************************
+ *
+ * ToolBar tray.
+ *
+ * This is a container which wraps the actual navigation (nav.toolbar-lining).
+ * Selector from toolbar.theme.css.
+ ******************************************************************************/
+
+/**
+ * Using '.toolbar-tray' and '.toolbar-tray-vertical' or
+ * '.toolbar-tray-horizontal' would be the right approach, but we can't do that.
+ */
+
+.toolbar-tray {
+  background: #fff;
+  color: #222330;
+}
+.toolbar .toolbar-tray-vertical {
+  border: 0; /* No border for unoriented mode (below 16.5em). */
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #fff;
+  color: #222330;
+}
+[dir="rtl"] .toolbar .toolbar-tray-vertical {
+  border: 0;
+}
+.toolbar-tray-vertical.is-active {
+  border-right: 0.0625rem solid #d8d9e0;
+}
+[dir="rtl"] .toolbar-tray-vertical.is-active {
+  border-left: 0.0625rem solid #d8d9e0;
+}
+/* Horizontal tray's inherited selector is a bit different. */
+.toolbar-horizontal .toolbar-tray,
+[dir="rtl"] .toolbar-horizontal .toolbar-tray {
+  border-color: rgba(216, 217, 224, 0.8);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #fff;
+  color: #222330;
+}
+
+/**
+ * Decrease the inherited 'end' padding of tray nav that preserves space for
+ * the orientation toggle.
+ */
+.toolbar-horizontal .toolbar-tray > .toolbar-lining {
+  padding-right: 2.75rem;
+}
+[dir="rtl"] .toolbar-horizontal .toolbar-tray > .toolbar-lining {
+  padding-right: 0;
+  padding-left: 2.75rem;
+}
+
+/******************************************************************************
+ *
+ * ToolBar tabs.
+ *
+ ******************************************************************************/
+
+/**
+ * Default state. Using the strongest selector from toolbar.theme.css.
+ * '.toolbar-item' would be enough otherwise.
+ *
+ * Min-height specified to fix the initial 'icon jump' for user tab
+ * (since user name is lazy-built, that tab is empty initially).
+ */
+.toolbar .toolbar-bar .toolbar-item {
+  background: #222330;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  line-height: 1rem; /* Inherited font size is --font-size-s. */
+  min-height: 2.5rem;
+}
+
+@media only screen and (min-width: 48em) {
+  .toolbar .toolbar-bar .toolbar-item {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    line-height: 0.75rem;
+    min-height: 2.75rem;
+  }
+}
+
+/**
+ * Hover state; selector from toolbar.theme.css.
+ * '.toolbar-item:hover' would be enough otherwise.
+ * Text decoration's original selector is '.toolbar .toolbar-item:hover'.
+ */
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item:hover,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active:hover {
+  background: #82828c;
+  color: #fff;
+  text-decoration: none;
+}
+/**
+ * Active (pressed) state.
+ * We have to use the same strong selector as hover has.
+ */
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item:active,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active:active {
+  background: #8e929c;
+  color: #fff;
+}
+/* Current page state (and in-trail if orientation is vertical). */
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active {
+  background: #545560;
+  color: #fff;
+}
+/**
+ * Focus state.
+ *
+ * Text-decoration inherited from toolbar.theme.css is defined with the selector
+ * '.toolbar-tab > .toolbar-item:focus', but we have to use a selector with the
+ * same strength as we have for the other states.
+ */
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item:focus,
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-item.is-active:focus {
+  position: relative; /* ToolBar tabs without icons are statically positioned. */
+  text-decoration: none;
+  background: #222330; /* Use the default background for a better focus state contrast. */
+  color: #fff;
+}
+.toolbar-item:focus::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 0.125rem solid #b3c9f5;
+  border-radius: 0.125rem;
+}
+
+/*****************************************************************************
+ *
+ * ToolBar tray items and ToolBar box.
+ *
+ ******************************************************************************/
+
+/* The .toolbar-box wraps first-level tray menu links. It provides a positioning
+ * context for the item list toggle but is present only if the tray is/was
+ * vertical.
+ *
+ * Since there isn't any common CSS class on these firts-level links we have to
+ * work around this with selectors for both cases.
+ *
+ * @see initItems() in toolbar.menu.es6.js.
+ */
+
+/**
+ * Toolbar items as first.
+ */
+
+/* Every menu-item link in the tray. */
+/* @todo (tray), horizontal, when orientation wasn't changed before. */
+.toolbar-tray a {
+  position: relative;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  color: #545560;
+  line-height: 1.25rem; /* Line height var(--space-s) is too small for longer menu links. */
+  font-weight: bold;
+}
+
+/**
+ * ToolBar icons theme sets 'end' padding for every menu-item.
+ * We need that only for links wrapped in toobar-box, when a toolbar-handle
+ * follows the link.
+ *
+ * Selector defined in toolbar.icons.theme.css (but has no direct relation with
+ * icons).
+ */
+/* .toolbar .toolbar-tray-vertical .toolbar-menu a,
+.toolbar .toolbar-tray-vertical .toolbar-menu ul a,
+[dir="rtl"] .toolbar .toolbar-tray-vertical .toolbar-menu a,
+[dir="rtl"] .toolbar .toolbar-tray-vertical .toolbar-menu ul a {
+  padding-right: var(--space-m);
+  padding-left: var(--space-m);
+} */
+
+/* 3rd level menu items (2. tray level) should be normal. */
+.toolbar-tray .level-2 a {
+  font-weight: normal;
+}
+/* No underlined links. */
+.toolbar-tray a:hover,
+.toolbar-tray a:active,
+.toolbar-tray a:focus,
+.toolbar-tray a.is-active {
+  text-decoration: none;
+}
+/* Focus */
+.toolbar-tray a:focus::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 0.125rem solid #b3c9f5;
+  border-radius: 0.125rem;
+}
+
+/**
+ * 'Current page' and active trail styles.
+ * Both selector are defined in toolbar.menu.css and set a text color.
+ *
+ * BTW '.toolbar .toolbar-tray a.is-active' and
+ * '.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a' are
+ * defined in toolbar.menu.css but those should be in theme, not in module.
+ *
+ * We define background color to comply WCAG 2.0 G148, this is why we have so
+ * many selectors here.
+ */
+
+.toolbar .level-2 a {
+  background: rgba(243, 244, 249, 0.4);
+  color: #545560;
+}
+.toolbar .level-3 a {
+  background: #f3f4f9;
+  color: #545560;
+}
+.toolbar .level-4 a {
+  background: rgba(216, 217, 224, 0.3);
+  color: #545560;
+}
+
+/* Current page and in-trail styles */
+.toolbar .toolbar-tray a.is-active,
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a {
+  background: #fff;
+  color: #003cc5;
+}
+.toolbar .toolbar-tray .level-2.menu-item--active-trail > .toolbar-box a {
+  background: rgba(243, 244, 249, 0.4);
+  color: #003cc5;
+}
+.toolbar .toolbar-tray .level-3.menu-item--active-trail > .toolbar-box a {
+  background: #f3f4f9;
+  color: #003cc5;
+}
+.toolbar .toolbar-tray .level-4.menu-item--active-trail > .toolbar-box a {
+  background: rgba(216, 217, 224, 0.3);
+  color: #003cc5;
+}
+
+/* Hover states with the same selector strength as the current page states. */
+.toolbar-tray a:hover,
+.toolbar .toolbar-tray a.is-active:hover,
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a:hover {
+  background: #f0f5fd;
+  color: #0036b1;
+}
+/* Focus. */
+.toolbar-tray a:focus,
+.toolbar .toolbar-tray a.is-active:focus,
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a:focus {
+  /* Focus background defined in toolbar.icons.css */
+  background: #f0f5fd;
+  /* Color defined in toolbar.theme.css */
+  color: #0036b1;
+}
+/* Active (pressed) state */
+.toolbar-tray a:active,
+.toolbar .toolbar-tray a.is-active:active,
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a:active {
+  background: #e6ecf8;
+  color: #00309e;
+}
+
+/* Only show in-trail styles for vertical toolbar (consitency improvement). */
+.toolbar .toolbar-tray-horizontal .menu-item--active-trail > .toolbar-box a {
+  background: #fff;
+  color: var(--toolbar-tray-link-fg);
+}
+
+/**
+ * ToolBar box.
+ *
+ * We don't want the underline inherited from toolbar.icons.theme.css.
+ * BTW this should be in toolbar.theme.css...
+ */
+.toolbar-box a:hover:focus {
+  text-decoration: none;
+}
+
+/******************************************************************************
+ *
+ * ToolBar tray menus.
+ *
+ * Styles defined here affect mainly vertical orientation.
+ ******************************************************************************/
+
+.level-1 > .toolbar-menu {
+  border-top: 0.0625rem solid #d8d9e0;
+}
+.toolbar-menu:not(.root) .menu-item:first-child > .toolbar-box > a {
+  -webkit-box-shadow: inset 0 0.375rem 0.375rem -0.1875rem rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0.375rem 0.375rem -0.1875rem rgba(0, 0, 0, 0.05);
+}
+
+/**
+ * Selector comes from toolbar.theme.css
+ * Normally, '.level-2 .toolbar-menu' should be enough.
+ */
+.toolbar .toolbar-tray-vertical .toolbar-menu ul ul {
+  border: 0 solid #d8d9e0;
+  border-width: 0.0625rem 0;
+}
+
+/**
+ * Override borders of vertical tray items.
+ * CSS selector overrides the same one from toolbar.theme.css.
+ */
+.toolbar .toolbar-tray-vertical .menu-item {
+  border: 0.0625rem solid #d8d9e0;
+  border-width: 0 0 0.0625rem;
+}
+/* We have to reset the weird styling inherited from toobar.theme.css. */
+.toolbar .toolbar-tray-vertical .menu-item + .menu-item {
+  border-width: 0 0 0.0625rem;
+}
+/* No border for deeper levels. */
+.toolbar .toolbar-tray-vertical .menu-item .menu-item {
+  border: 0;
+}
+
+/**
+ * We need borders for the other trays as well, not just for administration
+ * menu.
+ */
+.toolbar .toolbar-tray-vertical .toolbar-menu li {
+  border: 0.0625rem solid #d8d9e0;
+  border-width: 0 0 0.0625rem;
+}
+.toolbar .toolbar-tray-vertical .toolbar-menu li li {
+  border-width: 0;
+}
+.toolbar .toolbar-tray-vertical .toolbar-menu li li:first-child {
+  border-width: 0.0625rem 0 0;
+}
+
+/**
+ * No border for horizontal toolbar items.
+ * Selector from toolbar.theme.css.
+ */
+.toolbar-horizontal .toolbar-tray .menu-item + .menu-item,
+[dir="rtl"] .toolbar-horizontal .toolbar-tray .menu-item + .menu-item {
+  border: 0;
+}

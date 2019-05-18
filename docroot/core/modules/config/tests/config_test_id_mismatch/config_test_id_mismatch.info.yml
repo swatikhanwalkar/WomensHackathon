@@ -1,0 +1,12 @@
+name: 'Configuration test ID mismatch'
+type: module
+package: Testing
+version: VERSION
+core: 8.x
+dependencies:
+  - drupal:config_test
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

@@ -1,0 +1,47 @@
+
+/**
+ * @file
+ * Styling for the shortcut module.
+ */
+
+/**
+ * Add/remove links.
+ */
+.shortcut-action {
+  display: inline-block;
+  margin-left: 1rem; /* LTR */
+}
+[dir="rtl"] .shortcut-action {
+  margin-left: 0;
+  margin-left: 1rem;
+}
+.shortcut-action__message {
+  background: #545560;
+  border-radius: 0.125rem;
+  font-size: 0.889rem;
+  padding: -webkit-calc(0.5 * 0.5rem) 1rem;
+  padding: calc(0.5 * 0.5rem) 1rem;
+  color: #fff;
+  display: inline-block;
+  margin-left: 0.75rem; /* LTR */
+  opacity: 0;
+  -webkit-transform: translateY(-webkit-calc(-1 * 0.5rem));
+  -ms-transform: translateY(calc(-1 * 0.5rem));
+  transform: translateY(calc(-1 * 0.5rem));
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  vertical-align: top;
+}
+[dir="rtl"] .shortcut-action__message {
+  margin-left: 0;
+  margin-right: 0.75rem;
+}
+.shortcut-action:hover .shortcut-action__message,
+.shortcut-action:focus .shortcut-action__message {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}

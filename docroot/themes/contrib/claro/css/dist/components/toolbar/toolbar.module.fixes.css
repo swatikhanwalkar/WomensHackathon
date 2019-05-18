@@ -1,0 +1,71 @@
+/**
+ * @file
+ * Toolbar module fixes.
+ */
+
+/**
+ * Fix for unclickable toolbar menu-items in unoriented mode.
+ *
+ * @todo remove when https://drupal.org/node/3037284 is fixed.
+ */
+/* Unoriented ToolBar's tray. */
+.toolbar .toolbar-tray {
+  z-index: 503;
+}
+/* Oriented ToolBar's tray. */
+.toolbar-oriented .toolbar-tray {
+  z-index: 501;
+}
+
+/**
+ * Fix for unneeded top padding of the body element in unoriented mode.
+ *
+ * @todo remove when https://drupal.org/node/3035577 is fixed.
+ */
+@media (max-width: 16.49em) {
+  body.toolbar-vertical {
+    padding-top: 0 !important;
+  }
+}
+
+/**
+ * Fix unclickable (overflown) last toolbar item and orientation handle.
+ *
+ * If toolbar is vertical and it's <nav> longer than the available window
+ * height, the last toolbar item on the tray toolbar-toggle-orientation element
+ * get's unreachable by pointer (or touch).
+ * This happens because the vertical tray's height is set to 100%, and the space
+ * covered by the toolbar-bar isn't count in into this.
+ *
+ * @todo remove when https://drupal.org/node/3035577 is fixed.
+ */
+.toolbar-oriented .toolbar-tray-vertical .toolbar-toggle-orientation {
+  float: none;
+  overflow: hidden;
+}
+body.toolbar-fixed .toolbar .toolbar-tray-vertical {
+  padding-bottom: 2.5rem;
+}
+
+@media only screen and (min-width: 48em) {
+  .toolbar-oriented .toolbar-tray-vertical.is-active,
+  body.toolbar-fixed .toolbar .toolbar-tray-vertical {
+    padding-bottom: 2.75rem;
+  }
+}
+
+/**
+ * Fix unclickable ToolBar bar issue.
+ *
+ * If toolbar is vertical, a toolbar-tab without the toolbar-icon class is
+ * covered by this pseudo.
+ * Defined in toolbar.module.css.
+ *
+ * Can't see why this pseudo element was necessary, it just overlaps
+ * ToolBar tabs which have no icon.
+ *
+ * Remove when https://drupal.org/node/3037299 is fixed.
+ */
+.toolbar-oriented .toolbar-tray-vertical > .toolbar-lining::before {
+  content: normal;
+}

@@ -1,0 +1,15 @@
+name: Testing config overrides
+type: profile
+description: 'Minimal profile for running tests with config overrides in a profile.'
+version: VERSION
+core: 8.x
+hidden: true
+install:
+  - action
+  - language
+  - tour
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

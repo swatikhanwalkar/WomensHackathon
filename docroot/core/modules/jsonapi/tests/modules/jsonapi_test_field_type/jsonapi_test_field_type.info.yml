@@ -1,0 +1,9 @@
+name: 'JSON API test format-agnostic @FieldType normalizers'
+type: module
+package: Testing
+core: 8.x
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

@@ -1,0 +1,14 @@
+name: Place Blocks
+type: module
+description: 'Allow administrators to place blocks from any Drupal page'
+package: Core (Experimental)
+version: VERSION
+core: 8.x
+hidden: true
+dependencies:
+  - drupal:block
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

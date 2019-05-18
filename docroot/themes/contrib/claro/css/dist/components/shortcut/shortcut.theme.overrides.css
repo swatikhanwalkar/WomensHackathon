@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Shortcut extensions for Claro.
+ */
+
+/**
+ * Follow toolbar link's dimensions.
+ */
+.toolbar .toolbar-tray-vertical .edit-shortcuts {
+  padding: 0.75rem 1rem;
+  line-height: 1.25rem;
+  border-bottom: 0.0625rem solid #d8d9e0;
+}

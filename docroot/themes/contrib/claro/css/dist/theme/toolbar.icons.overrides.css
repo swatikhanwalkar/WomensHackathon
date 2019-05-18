@@ -1,0 +1,349 @@
+/**
+ * @file
+ * Toolbar icon overrides for Claro.
+ *
+ * Using an icon font instead of standalone svg assets.
+ */
+
+/**
+ * Custom icon font.
+ */
+@font-face {
+  font-family: 'claro-icons';
+  src: url('../../../fonts/claro-icons/claro-icons.eot');
+  src:
+    url('../../../fonts/claro-icons/claro-icons.eot#iefix') format('embedded-opentype'),
+    url('../../../fonts/claro-icons/claro-icons.woff2') format('woff2'),
+    url('../../../fonts/claro-icons/claro-icons.woff') format('woff'),
+    url('../../../fonts/claro-icons/claro-icons.ttf') format('truetype'),
+    url('../../../fonts/claro-icons/claro-icons.svg#claro-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * Icon dimensions.
+ */
+.toolbar .toolbar-icon {
+  padding-left: 2.5rem;
+}
+[dir="rtl"] .toolbar .toolbar-icon {
+  padding-right: 2.5rem;
+}
+
+.toolbar .toolbar-icon::before {
+  /* Position is already set to absolute. */
+  top: 50%;
+  left: 0.5rem;
+  background: none !important;
+  color: inherit;
+  width: 2rem;
+  height: auto;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-family: 'claro-icons', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-indent: 0;
+  text-align: center;
+}
+[dir="rtl"] .toolbar .toolbar-icon:before {
+  right: 0.5rem;
+  left: auto;
+}
+
+/*****************************************************************************
+ *
+ * Main Toolbar tab icons.
+ *
+ *****************************************************************************/
+
+.toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+  width: auto;
+  padding-left: 2.5rem;
+}
+[dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+  padding-right: 2.5rem;
+  padding-left: 1rem;
+}
+/**
+ * Instead of just using the whole media query
+ * 'only screen and (min-width: 16.5em)' and the root selector '.toolbar ...'
+ * we define 'only screen' and '.toolbar-oriented ...' as well.
+ */
+@media only screen {
+  .toolbar-oriented .toolbar-bar .toolbar-tab > .toolbar-icon,
+  [dir="rtl"] .toolbar-oriented .toolbar-bar .toolbar-tab > .toolbar-icon {
+    width: 3rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (min-width: 16.5em) {
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon,
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+    width: 3rem;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (min-width: 36em) {
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+    width: auto;
+    padding-right: 1rem;
+    padding-left: 2.5rem;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon {
+    width: auto;
+    padding-right: 2.5rem;
+    padding-left: 1rem;
+  }
+
+  .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon::before {
+    left: 0.5rem;
+    width: 2rem;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .toolbar-tab > .toolbar-icon::before {
+    right: 0.5rem;
+    left: auto;
+  }
+}
+
+/**
+ * Remove outline from focus.
+ * Settings tray does this for us, but contextual and tour don't.
+ * This addresses mainly buttons in the ToolBar bar.
+ */
+.toolbar-icon:focus {
+  outline: 0;
+}
+
+/******************************************************************************
+ *
+ * Actual toolbar icons.
+ *
+ ******************************************************************************/
+
+/**
+ * Dropdown toogle.
+ */
+.toolbar .toolbar-handle::before {
+  content: '\e81c';
+}
+[dir="rtl"] .toolbar .toolbar-handle::before {
+  content: '\e809';
+}
+.toolbar .toolbar-handle.open::before {
+  color: #003cc5;
+  content: '\e801';
+}
+
+.toolbar .toolbar-box .toolbar-handle,
+[dir="rtl"] .toolbar .toolbar-box .toolbar-handle {
+  /* padding: 0 var(--toolbar-tab--padding-horizontal); */
+  width: 3rem;
+}
+
+/******************************************************************************
+ *
+ * Orientation toogle.
+ *
+ * Orientation toggle button doesn't have a common selector, we have to aim
+ * every state separately (instead of using element selector 'button').
+ *
+ * Original selector is ''.toolbar .toolbar-toggle-orientation button' defined
+ * in toolbar.icons.theme.css
+ ******************************************************************************/
+
+.toolbar .toolbar-toggle-orientation,
+.toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
+  background-color: transparent;
+  border: 0 !important;
+}
+
+.toolbar .toolbar-toggle-orientation .toolbar-icon-toggle-horizontal,
+.toolbar .toolbar-toggle-orientation .toolbar-icon-toggle-vertical {
+  width: 2.75rem;
+  height: 2.75rem;
+  background: #fff;
+  color: #8e929c;
+}
+
+.toolbar .toolbar-icon-toggle-horizontal::before,
+.toolbar .toolbar-icon-toggle-vertical::before,
+[dir="rtl"] .toolbar .toolbar-icon-toggle-horizontal::before,
+[dir="rtl"] .toolbar .toolbar-icon-toggle-vertical::before {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.toolbar .toolbar-icon-toggle-horizontal::before {
+  content: '\e80f';
+}
+.toolbar .toolbar-icon-toggle-vertical::before {
+  content: '\e80c';
+}
+[dir="rtl"] .toolbar .toolbar-icon-toggle-vertical::before {
+  content: '\e80d';
+}
+
+/* States */
+.toolbar .toolbar-icon-toggle-horizontal:focus,
+.toolbar .toolbar-icon-toggle-horizontal:hover,
+.toolbar .toolbar-icon-toggle-vertical:focus,
+.toolbar .toolbar-icon-toggle-vertical:hover {
+  background: #fff;
+  color: #003cc5;
+}
+.toolbar .toolbar-icon-toggle-horizontal:focus,
+.toolbar .toolbar-icon-toggle-vertical:focus {
+  border: 0.125rem solid #b3c9f5;
+  border-radius: 0.125rem;
+}
+
+/******************************************************************************
+ *
+ * Vertical toolbar's submenu toggles.
+ *
+ ******************************************************************************/
+
+/* Selector: toolbar.icons.theme.css */
+.toolbar .toolbar-icon.toolbar-handle {
+  color: #222330; /* No background, keeping the menu-item's focus/hover state visible */
+}
+.toolbar .toolbar-icon.toolbar-handle:before,
+[dir="rtl"] .toolbar .toolbar-icon.toolbar-handle:before {
+  right: auto;
+  left: 0.5rem;
+}
+.toolbar .toolbar-icon.toolbar-handle:hover {
+  background: #f0f5fd;
+  color: #003cc5;
+}
+.toolbar a:focus + .toolbar-icon.toolbar-handle:hover {
+  -webkit-box-shadow: -webkit-calc(-1 * 0.125rem) 0 0 #b3c9f5;
+  box-shadow: calc(-1 * 0.125rem) 0 0 #b3c9f5;
+}
+[dir="rtl"] .toolbar a:focus + .toolbar-icon.toolbar-handle:hover {
+  -webkit-box-shadow: 0.125rem 0 0 #b3c9f5;
+  box-shadow: 0.125rem 0 0 #b3c9f5;
+}
+/**
+ * Selector from: toolbar.icons.theme.css
+ * Handle is already absolute-positioned.
+ */
+.toolbar .toolbar-icon.toolbar-handle:focus {
+  background: #f0f5fd;
+  color: #003cc5;
+}
+.toolbar .toolbar-icon.toolbar-handle:focus::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 0.125rem solid #b3c9f5;
+  border-radius: 0.125rem;
+}
+
+/******************************************************************************
+ *
+ * Top level toolbar icons.
+ *
+ ******************************************************************************/
+
+.toolbar .toolbar-icon-menu::before {
+  content: '\e817';
+}
+.toolbar .toolbar-icon-help::before {
+  content: '\e811';
+}
+.toolbar .toolbar-icon-shortcut::before {
+  content: '\e83c';
+}
+.toolbar .toolbar-icon-escape-admin::before {
+  content: '\e809';
+}
+[dir="rtl"] .toolbar .toolbar-icon-escape-admin::before {
+  content: '\e81c';
+}
+
+/**
+ * Main menu icons.
+ */
+.toolbar .toolbar-icon-system-admin-content::before {
+  content: '\e80e';
+}
+.toolbar .toolbar-icon-system-admin-structure::before {
+  content: '\e807';
+}
+.toolbar .toolbar-icon-system-themes-page::before {
+  content: '\e808';
+}
+.toolbar .toolbar-icon-entity-user-collection::before {
+  content: '\e80a';
+}
+.toolbar .toolbar-icon-system-modules-list::before {
+  content: '\e810';
+}
+.toolbar .toolbar-icon-system-admin-config::before {
+  content: '\e814';
+}
+.toolbar .toolbar-icon-system-admin-reports::before {
+  content: '\e800';
+}
+.toolbar .toolbar-icon-help-main::before {
+  content: '\e811';
+}
+
+/**
+ * User module's toolbar item icon.
+ */
+.toolbar-bar .toolbar-icon-user::before {
+  content: '\e81b';
+}
+
+/**
+ * Vertical toolbar menu item metrics.
+ */
+.toolbar .toolbar-tray-vertical .toolbar-menu a {
+  padding-right: 3rem; /* Save space for the toolbar dropdown handle. */
+  padding-left: 2.5rem; /* Space for the icon. */
+}
+[dir="rtl"] .toolbar .toolbar-tray-vertical .toolbar-menu a {
+  padding-right: 2.5rem;
+  padding-left: 3rem;
+}
+
+/**
+ * Deeper levels.
+ */
+/* From second level. */
+.toolbar .toolbar-tray-vertical .toolbar-menu ul a {
+  padding-left: 2.5rem;
+}
+[dir="rtl"] .toolbar .toolbar-tray-vertical .toolbar-menu ul a {
+  padding-right: 2.5rem;
+  padding-left: 3rem;
+}
+/* From third level. */
+.toolbar .toolbar-tray-vertical .toolbar-menu ul ul a {
+  padding-left: 3rem;
+}
+[dir="rtl"] .toolbar .toolbar-tray-vertical .toolbar-menu ul ul a {
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+/* From fourth level. */
+.toolbar .toolbar-tray-vertical .toolbar-menu ul ul ul a {
+  padding-left: 3.5rem;
+}
+[dir="rtl"] .toolbar .toolbar-tray-vertical .toolbar-menu ul ul ul a {
+  padding-right: 3.5rem;
+  padding-left: 3rem;
+}

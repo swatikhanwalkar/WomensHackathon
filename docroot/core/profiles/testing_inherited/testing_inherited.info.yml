@@ -1,0 +1,23 @@
+name: Testing Inherited
+type: profile
+description: 'Profile for testing base profile inheritance.'
+version: VERSION
+core: 8.x
+hidden: true
+
+base profile: testing
+
+install:
+  - block
+  - config
+  - child_profile_module
+  - contrib_child_profile_module
+  - custom_child_profile_module
+
+themes:
+  - stable
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

@@ -1,0 +1,13 @@
+name: 'Layout Builder Views Test'
+type: module
+description: 'Support module for testing.'
+package: Testing
+version: VERSION
+core: 8.x
+dependencies:
+  - views
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

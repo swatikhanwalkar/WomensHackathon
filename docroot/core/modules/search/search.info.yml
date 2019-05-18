@@ -1,0 +1,12 @@
+name: Search
+type: module
+description: 'Enables site-wide keyword searching.'
+package: Core
+version: VERSION
+core: 8.x
+configure: entity.search_page.collection
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

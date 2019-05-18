@@ -1,0 +1,14 @@
+name: 'Taxonomy test views'
+type: module
+description: 'Provides default views for views taxonomy tests.'
+package: Testing
+version: VERSION
+core: 8.x
+dependencies:
+  - drupal:taxonomy
+  - drupal:views
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

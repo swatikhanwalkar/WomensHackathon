@@ -1,0 +1,169 @@
+:root {
+  /*
+   * Color Palette.
+   */
+  --color-absolutezero: #003cc5;
+  --color-white: #fff;
+  --color-text: #222330;
+  --color-whitesmoke: #f3f4f9;
+  --color-whitesmoke-light: #fafbfd;
+  --color-whitesmoke-o-40: rgba(243, 244, 249, 0.4);
+  /* Secondary. */
+  --color-lightgray: #d8d9e0;
+  --color-lightgray-o-80: rgba(216, 217, 224, 0.8);
+  --color-grayblue: #8e929c;
+  --color-oldsilver: #82828c;
+  --color-davysgrey: #545560;
+  --color-maximumred: #d72222;
+  --color-sunglow: #ffd23f;
+  --color-celadongreen: #228572;
+  --color-focus: #26a769;
+  /* Variations. */
+  --color-lightgray-hover: #c2c3ca; /* 5% darker than base. */
+  --color-lightgray-active: #adaeb3; /* 10% darker than base. */
+  --color-absolutezero-hover: #0036b1; /* 5% darker than base. */
+  --color-absolutezero-active: #00309e; /* 10% darker than base. */
+  --color-maximumred-hover: #c11f1f; /* 5% darker than base. */
+  --color-maximumred-active: #ab1b1b; /* 10% darker than base. */
+  --color-bgblue-hover: #f0f5fd; /* 5% darker than base. */
+  --color-bgblue-active: #e6ecf8; /* 10% darker than base. */
+  --color-bgred-hover: #fdf5f5; /* 5% darker than base. */
+  --color-bgred-active: #fceded; /* 10% darker than base. */
+  /*
+   * Base.
+   */
+  --color-fg: var(--color-text);
+  --color-bg: var(--color-white);
+  --color-link: var(--color-absolutezero);
+  --color-divider: rgba(142, 146, 156, 0.4);
+  /*
+   * Typography.
+   */
+  --font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --line-height: 1.5;
+  --font-size-base: 1rem; /* 1rem = 16px if font root is 100% ands browser defaults are used. */
+  --font-size-h1: 2.027rem; /* ~32px */
+  --font-size-h2: 1.802rem; /* ~29px */
+  --font-size-h3: 1.602rem; /* ~26px */
+  --font-size-h4: 1.424rem; /* ~23px */
+  --font-size-h5: 1.266rem; /* ~20px */
+  --font-size-h6: 1.125rem; /* 18px */
+  --font-size-s: 0.889rem; /* ~14px */
+  --font-size-xs: 0.79rem; /* ~13px */
+  --font-size-xxs: 0.702rem; /* ~11px */
+  --font-size-label: var(--font-size-s);
+  --font-size-description: var(--font-size-xs);
+  /**
+   * Spaces.
+   */
+  --space-xl: 3rem; /* 4 * 16px = 48px */
+  --space-l: 1.5rem; /* 1.5 * 16px = 24px */
+  --space-m: 1rem; /* 1 * 16px = 16px */
+  --space-s: 0.75rem; /* 0.75 * 16px = 12px */
+  --space-xs: 0.5rem; /* 0.5 * 16px = 8px */
+  /*
+   * Common.
+   */
+  --speed-transition: 0.2s;
+  --transition: all 200ms ease-out;
+  --base-border-radius: 2px;
+  /*
+   * Inputs.
+   */
+  --color-input-fg: var(--color-fg);
+  --color-input-bg: var(--color-bg);
+  --color-description-fg: var(--color-davysgrey);
+  --color-placeholder-fg: var(--color-grayblue);
+  --color-input-border: var(--color-grayblue);
+  --color-input-border-hover: var(--color-text);
+  --color-input-border-focus: var(--color-absolutezero);
+  --color-input-focus-shadow: rgba(0, 74, 220, 0.3); /* Absolute zero with opacity. */
+  --color-input-error: var(--color-maximumred);
+  --color-input-border-error: var(--color-maximumred);
+  --color-input-label-disabled: rgba(84, 85, 96, 0.6); /* Davy's grey with 0.6 opacity. */
+  --color-input-fg-disabled: var(--color-oldsilver);
+  --color-input-bg-disabled: #f2f2f3; /* Light gray with 0.3 opacity on white bg. */
+  --color-input-border-disabled: #bababf; /* Old silver with 0.5 opacity on white bg. */
+  --opacity-input-border-disabled: 0.5;
+  --size-input-border-radius: 0.125rem; /* (1/8)em ~ 2px */
+  --size-input-border: 0.0625rem; /* (1/16)em ~ 1px */
+  --size-required-mark: 0.4375rem; /* 7px inside the form element label. */
+  /*
+   * Details.
+   */
+  --color-details-bg: rgba(243, 244, 249, 0.4);
+  --color-details-border: rgba(216, 217, 224, 0.8);
+  --color-details-summary-shadow: var(--color-focus);
+  --details-wrapper-padding-desktop-bottom: calc(var(--space-m) + var(--space-s));
+  --details-wrapper-padding-desktop-left: calc(var(--space-m) + var(--space-s) + var(--space-xs));
+  --shadow-details: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --size-details-border: 1px;
+  --spread-radius-details-box-shadow: 2px;
+  --transition-duration-details-background-color: 0.12s;
+  --transition-duration-details-box-shadow: 0.2s;
+  --transition-duration-details-transform: 0.12s;
+  /**
+   * Buttons.
+   */
+  --color-button-default-fg: var(--color-text);
+  --color-button-default-bg: var(--color-lightgray);
+  --color-button-default-bg-hover: var(--color-lightgray-hover);
+  --color-button-default-bg-active: var(--color-lightgray-active);
+  --color-button-default-bg-focus: var(--color-button-default-bg);
+  --color-button-default-disabled-bg: #ebebed;
+  --color-button-default-disabled-fg: var(--color-grayblue);
+  --color-button-border-focus: #5a8bed;
+  --color-button-primary-fg: var(--color-white);
+  --color-button-primary-bg: var(--color-absolutezero);
+  --color-button-primary-bg-hover: var(--color-absolutezero-hover);
+  --color-button-primary-bg-active: var(--color-absolutezero-active);
+  --color-button-primary-bg-focus: var(--color-button-primary-bg);
+  --color-button-primary-disabled-bg: var(--color-lightgray);
+  --color-button-primary-disabled-fg: var(--color-oldsilver);
+  --color-button-danger-fg: var(--color-white);
+  --color-button-danger-bg: var(--color-maximumred);
+  --color-button-danger-bg-hover: var(--color-maximumred-hover);
+  --color-button-danger-bg-active: var(--color-maximumred-active);
+  --color-button-danger-bg-focus: var(--color-button-danger-bg);
+  --size-button-border-radius: var(--base-border-radius);
+  /**
+   * jQuery.UI dropdown.
+   */
+  --color-jui-dropdown-fg: var(--color-davysgrey);
+  --color-jui-dropdown-bg: var(--color-white);
+  --color-jui-dropdown-fg--active: var(--color-white);
+  --color-jui-dropdown-bg--active: var(--color-absolutezero);
+  --color-jui-dropdown-border: rgba(216, 217, 224, 0.8); /* Light gray with 0.8 opacity. */
+  --color-jui-dropdown-shadow: rgba(34, 35, 48, 0.1); /* Text color with 0.1 opacity. */
+  /**
+   * Shortcut action.
+   */
+  --color-shortcut-bg: var(--color-davysgrey);
+  --size-shortcut-border-radius: var(--base-border-radius);
+  --size-shortcut-padding: calc(0.5 * var(--space-xs)) var(--space-m);
+  --size-shortcut-icon: var(--space-l);
+  /*
+   * Tabs.
+   */
+  --size-tabs-border-radius: var(--base-border-radius);
+  --size-tabs-element-hover: 3px;
+  --size-tabs-element-focus: 3px;
+  --size-tabs-element-active: 3px;
+  --height-tabs-link: 3rem; /* 48px */
+  --border-tabs-base: 1px solid var(--color-lightgray);
+  --shadow-tabs-base: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --border-tabs-trigger: 1px solid rgba(216, 217, 224, 0.8);
+  --color-tabs-background-hover: #e6ecf8;
+  /**
+   * Pager.
+   */
+  --pager-size: 2rem; /* --space-m Ã— 2 */
+  --pager-border-width: 0.125rem; /* 2px */
+  --pager-fg: var(--color-davysgrey);
+  --pager-bg: var(--color-white);
+  --pager-bg--hover: var(--color-bgblue-active);
+  --pager-bg--focus: var(--color-focus);
+  --pager-fg--active: var(--color-white);
+  --pager-bg--active: var(--color-absolutezero);
+  --pager-action-border-radius: var(--pager-border-width);
+}

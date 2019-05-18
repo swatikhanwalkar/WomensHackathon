@@ -1,0 +1,72 @@
+/**
+ * @file
+ * Workspace toolbar tab overrides for Claro.
+ */
+
+/**
+ * Workspace icon.
+ */
+.toolbar .toolbar-icon-workspace::before {
+  content: '\e803';
+}
+
+.toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon {
+  background: inherit;
+  color: inherit;
+}
+
+@media (max-width: 766px) {
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace {
+    padding-right: 1rem;
+  }
+
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace::before {
+    left: 0.5rem;
+    width: 2rem;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace::before {
+    right: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 16.5em) {
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace,
+  [dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace {
+    width: 3rem;
+    padding-right: 0;
+    padding-left: 0;
+    text-indent: -9999px;
+  }
+
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace::before,
+  [dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace::before {
+    right: auto;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 36em) {
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace {
+    width: auto;
+    padding-right: 1rem;
+    padding-left: 2.5rem;
+    text-indent: 0;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace {
+    width: auto;
+    padding-right: 2.5rem;
+    padding-left: 1rem;
+    text-indent: 0;
+  }
+
+  .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace::before {
+    left: 0.5rem;
+    width: 2rem;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .workspaces-toolbar-tab .toolbar-icon-workspace::before {
+    right: 0.5rem;
+    left: auto;
+    width: 2rem;
+  }
+}

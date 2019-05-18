@@ -1,0 +1,243 @@
+/**
+ * @file
+ * Main form and form item styles.
+ */
+
+::-webkit-input-placeholder {
+  color: #8e929c;
+}
+
+:-moz-placeholder {
+  color: #8e929c;
+}
+
+::-moz-placeholder {
+  color: #8e929c;
+}
+
+:-ms-input-placeholder {
+  color: #8e929c;
+}
+
+::-ms-input-placeholder {
+  color: #8e929c;
+}
+
+::placeholder {
+  color: #8e929c;
+}
+/* IE 10 and 11 needs this set as important. */
+:-ms-input-placeholder {
+  color: #8e929c !important;
+}
+
+/**
+ * General form item.
+ */
+.form-item {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+/**
+ * When a table row has a single form item, prevent it from adding unnecessary
+ * extra spacing. If it has multiple form items, allow spacing between them,
+ * overriding Classy.
+ */
+tr .form-item {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+/* Remove spacing if the form item nested in table is the only child. */
+td > .form-item:only-child {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/**
+ * Form element label.
+ */
+.form-item__label {
+  display: table;
+  font-size: 0.875em; /* 14px */
+  line-height: 1.28571; /* 18px */
+  margin-top: 0.28571em; /* 4px */
+  margin-bottom: 0.28571em; /* 4px */
+  font-weight: bold;
+}
+.form-item__label[for] {
+  cursor: pointer;
+}
+.form-item__label.option {
+  display: inline;
+  font-weight: normal;
+}
+/* Label states. */
+.form-item__label.has-error {
+  color: #d72222;
+}
+.form-item__label.option.has-error {
+  color: inherit;
+}
+.form-item__label.is-disabled {
+  color: #82828c;
+  cursor: default; /* @todo ...or auto? */
+}
+.form-item__label.form-required::after,
+.fieldset__label.form-required::after {
+  content: "";
+  vertical-align: super;
+  display: inline-block;
+  /* Use a background image to prevent screen readers from announcing the text. */
+  background-image: url(../../../images/core/ee0000/required.svg);
+  background-repeat: no-repeat;
+  background-size: 0.4375rem 0.4375rem;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  margin-right: 0.3em;
+  margin-left: 0.3em;
+}
+
+/**
+ * Form item description.
+ */
+.form-item__description {
+  font-size: 0.75em; /* 12px */
+  line-height: 1.41667; /* 17px */
+  color: #545560;
+  margin-top: 0.5em; /* 6px */
+  margin-bottom: 0.5em; /* 6px */
+}
+/* Description states. */
+.form-item__description.is-disabled {
+  color: #82828c;
+}
+
+/**
+ * Error message (Inline form errors).
+ */
+.form-item__error-message {
+  font-size: 0.75em; /* 12px */
+  font-weight: normal;
+  line-height: 1.41667; /* 17px */
+  color: #d72222;
+  margin-top: 0.5em; /* 6px */
+  margin-bottom: 0.5em; /* 6px */
+}
+
+.form-item__prefix.is-disabled,
+.form-item__suffix.is-disabled {
+  color: #82828c;
+}
+
+/**
+ * Form actions.
+ */
+.form-actions {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.form-actions .button {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/**
+ * Fieldset.
+ */
+.fieldset {
+  min-width: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+.fieldset--default {
+  background-color: #fcfcfa;
+  border-radius: 2px;
+  padding: 30px 18px 18px;
+  position: relative;
+}
+.fieldset__legend {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.fieldset__legend--default {
+  font-size: 1em;
+  letter-spacing: 0.08em;
+  position: absolute;
+  top: 10px;
+}
+.fieldset__legend--composite {
+  margin-top: 0.28571em; /* 4px */
+  margin-bottom: 0.28571em; /* 4px */
+  font-size: 0.875em; /* 14px */
+  line-height: 1.28571; /* 18px */
+  text-transform: none;
+}
+.fieldset__label.is-disabled {
+  color: #82828c;
+}
+.fieldset__label.has-error {
+  color: #d72222;
+}
+.fieldset__description {
+  font-size: 0.75em; /* 12px */
+  line-height: 1.41667; /* 17px */
+  color: #545560;
+  margin-top: 0.5em; /* 6px */
+  margin-bottom: 0.5em; /* 6px */
+}
+.fieldset__description.is-disabled {
+  color: #82828c;
+}
+/* Error message (Inline form errors). */
+.fieldset__error-message {
+  font-size: 0.75em; /* 12px */
+  font-weight: normal;
+  line-height: 1.41667; /* 17px */
+  color: #d72222;
+  margin-top: 0.5em; /* 6px */
+  margin-bottom: 0.5em; /* 6px */
+}
+
+/**
+ * Password module.
+ *
+ * @legacy
+ * @todo These should be in a standalone component file.
+ */
+.confirm-parent,
+.password-parent {
+  overflow: visible;
+  width: auto;
+}
+
+.form-item-options-group-info-identifier,
+.form-item-pass .description {
+  clear: both;
+}
+
+/**
+ * Improve form element usability on narrow devices.
+ *
+ * @legacy
+ */
+@media screen and (max-width: 600px) {
+  .password-strength {
+    width: 100%;
+  }
+  div.form-item div.password-suggestions {
+    float: none;
+  }
+}

@@ -1,0 +1,85 @@
+/**
+ * @file
+ * Visual styles for progress bar.
+ *
+ * @see progress.js
+ */
+
+.progress::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.progress--small .progress__track {
+  height: 0.5rem;
+}
+.progress--small .progress__bar {
+  height: 0.5rem;
+}
+
+.progress--small .progress__label {
+  font-size: 0.889rem;
+}
+
+.progress__track {
+  border-color: #8e929c;
+  border-radius: 1rem;
+  background-color: #d8d9e0;
+  height: 1rem;
+  margin-top: 0;
+}
+
+.progress__bar {
+  border: 1px #003cc5 solid;
+  background-color: #003cc5;
+  margin-top: -1px;
+  margin-left: -1px; /* LTR */
+  padding: 0 1px;
+  height: 1rem;
+  border-radius: 1rem;
+  -webkit-transition: width 0.5s ease-out;
+  transition: width 0.5s ease-out;
+}
+[dir="rtl"] .progress__bar {
+  margin-left: 0;
+  margin-right: -1px;
+}
+/* Variations of progress bar for password field */
+.progress__bar.is-weak {
+  border-color: #d72222;
+  background-color: #d72222;
+}
+.progress__bar.is-fair {
+  border-color: #ffd23f;
+  background-color: #ffd23f;
+}
+.progress__bar.is-good {
+  border-color: #003cc5;
+  background-color: #003cc5;
+}
+.progress__bar.is-strong {
+  border-color: #228572;
+  background-color: #228572;
+}
+
+.progress__label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.progress__description,
+.progress__percentage {
+  color: #8e929c;
+  overflow: hidden;
+  font-size: 0.79rem;
+  margin-top: 0.5rem;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .progress__bar {
+    -webkit-transition: none;
+    transition: none;
+  }
+}

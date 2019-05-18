@@ -1,0 +1,294 @@
+/**
+ * @file
+ * Collapsible details.
+ *
+ * @see collapse.js
+ */
+.claro-details {
+  display: block;
+  border: var(--size-details-border) solid var(--color-details-border);
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-m);
+  background-color: var(--color-white);
+  border-radius: var(--base-border-radius);
+  box-shadow: var(--shadow-details);
+}
+
+.claro-details--accordion,
+.entity-meta .claro-details {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: none;
+}
+
+.claro-details__summary {
+  box-sizing: border-box;
+  padding: var(--space-m) var(--space-m) var(--space-m) var(--details-wrapper-padding-desktop-left); /* LTR */
+  list-style: none;
+  background-color: transparent;
+  color: var(--color-davysgrey);
+  line-height: 1rem;
+  text-transform: capitalize;
+  border-radius: var(--base-border-radius);
+  transition: background-color var(--transition-duration-details-background-color) ease-in-out;
+  cursor: pointer;
+  position: relative;
+}
+[dir="rtl"] .claro-details__summary {
+  padding-right: var(--details-wrapper-padding-desktop-left);
+  padding-left: var(--space-m);
+}
+
+.claro-details--accordion .claro-details__summary,
+.entity-meta .claro-details__summary {
+  padding: var(--space-l) var(--space-l) var(--space-l) var(--details-wrapper-padding-desktop-left); /* LTR */
+}
+
+[dir="rtl"] .claro-details--accordion .claro-details__summary,
+[dir="rtl"] .entity-meta .claro-details__summary {
+  padding-right: var(--details-wrapper-padding-desktop-left);
+  padding-left: var(--space-l);
+}
+
+/**
+ * Details marker styles.
+ */
+/* Remove the marker on Chrome */
+.claro-details__summary::-webkit-details-marker {
+  display: none;
+}
+
+.claro-details__summary::before {
+  content: "";
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M5.2109375,1.3144531 3.7890625,2.7226562 9.0917969,8.0761719 3.7890625,13.429688 5.2109375,14.837891 11.908203,8.0761719Z' fill='%23545560'/%3E%3C/svg%3E") no-repeat 50% 50%;
+  background-size: contain;
+  width: var(--space-m);
+  height: var(--space-m);
+  transition: transform var(--transition-duration-details-transform) ease-in 0s;
+  display: inline-block;
+  text-align: center;
+  transform: rotate(0); /* LTR */
+  position: absolute;
+  left: var(--space-s); /* LTR */
+  top: 50%;
+  margin-top: calc(var(--space-m) / -2);
+}
+[dir="rtl"] .claro-details__summary::before {
+  right: var(--space-s);
+  left: auto;
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .claro-details__summary::before {
+    transition: none;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .claro-details__summary::before {
+    transition: transform var(--transition-duration-details-transform) ease-in 0s, margin var(--transition-duration-details-transform) ease-in 0s;
+    background: none;
+    border: 0.125rem solid;
+    border-width: 0.125rem 0.125rem 0 0;
+    width: 0.5625rem;
+    height: 0.5625rem;
+    margin-top: calc(0.5625rem / -2);
+    transform: rotate(45deg); /* LTR */
+  }
+
+  [dir="rtl"] .claro-details__summary::before {
+    transform: rotate(225deg);
+  }
+}
+
+/**
+ * Safari (at least version 12.1) cannot handle our details marker
+ * transition properly.
+ *
+ * Every additional pointer triggered toggle event freezes the transition,
+ * and the transition is continued and finished after the pointer leaves
+ * the Detail elements' summary.
+ *
+ * Even that it is possible to provide a JavaScript workaround for it (by
+ * adding/removing a helper class with JavaScript if the Details is
+ * toggled), that hack will make RTL details worse than without the hack.
+ *
+ * This weird query was found in
+ * https://stackoverflow.com/questions/16348489#25975282 (based on the
+ * answer it works for Safari 10.1+)
+ */
+/* stylelint-disable-next-line unit-whitelist */
+@media not all and (min-resolution: 0.001dpcm) {
+  @media {
+    .claro-details__summary::before {
+      transition: none;
+    }
+  }
+}
+
+/**
+ * Details summary focus.
+ */
+.claro-details__summary::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: opacity var(--transition-duration-details-box-shadow) ease-in-out;
+  opacity: 0;
+  box-shadow:
+    inset 0 0 0 var(--spread-radius-details-box-shadow) var(--color-details-summary-shadow),
+    0 0 0 calc(var(--spread-radius-details-box-shadow) / 2) var(--color-details-summary-shadow);
+  content: "";
+  border-radius: var(--base-border-radius);
+  pointer-events: none;
+}
+
+/**
+ * Details summary states.
+ */
+.claro-details__summary:focus {
+  box-shadow: none;
+}
+
+.claro-details__summary:hover::before,
+.claro-details__summary:hover:focus::before,
+.claro-details[open] > .claro-details__summary:focus::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M5.2109375,1.3144531 3.7890625,2.7226562 9.0917969,8.0761719 3.7890625,13.429688 5.2109375,14.837891 11.908203,8.0761719Z' fill='%230036B1'/%3E%3C/svg%3E");
+}
+
+.claro-details[open] > .claro-details__summary::before {
+  transform: rotate(90deg); /* for LTR and RTL */
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .claro-details__summary:hover::before,
+  .claro-details__summary:hover:focus::before {
+    background: none;
+  }
+
+  .claro-details[open] > .claro-details__summary::before,
+  [dir="rtl"] .claro-details[open] > .claro-details__summary::before {
+    background: none;
+    transform: rotate(135deg); /* for LTR and RTL */
+    margin-right: 0.125rem;
+    margin-top: calc((0.5625rem / -2) - 0.125rem);
+    /* transform-origin:; */
+    /* transform: matrix(-0.707107, 0.707107, -0.707107, -0.707107, 0, 0) */
+  }
+}
+
+.claro-details__summary:hover {
+  color: var(--color-absolutezero);
+  background-color: var(--color-bgblue-hover);
+}
+
+/**
+ * Focus styles.
+ */
+
+/**
+ * Active has to be here for Firefox.
+ * Merges standard collapse-processed selectors.
+ */
+.claro-details__summary:focus::after,
+.claro-details__summary:active::after,
+.collapse-processed > .claro-details__summary .details-title:focus::after {
+  opacity: 1;
+}
+
+/**
+ * Safari workaround.
+ */
+/* stylelint-disable-next-line unit-whitelist */
+@media not all and (min-resolution: 0.001dpcm) {
+  @media {
+    .claro-details__summary:focus::after,
+    .claro-details__summary:active::after {
+      transition: none;
+    }
+  }
+}
+
+.claro-details[open] > .claro-details__summary:focus {
+  color: var(--color-absolutezero);
+}
+
+/**
+ * Details content.
+ */
+.claro-details__wrapper {
+  margin: var(--space-m);
+}
+
+@media screen and (min-width: 48em) {
+  .claro-details__wrapper {
+    margin: var(--space-l) var(--details-wrapper-padding-desktop-left);
+  }
+}
+
+.claro-details--accordion .claro-details__wrapper,
+.entity-meta .claro-details__wrapper {
+  background-color: var(--color-details-bg);
+}
+
+/**
+ * Collapse processed for non-supporting browsers like IE or Edge.
+ */
+.collapse-processed > .claro-details__summary {
+  padding: 0;
+}
+
+.collapse-processed > .claro-details__summary::after {
+  content: none;
+}
+
+.collapse-processed > .claro-details__summary .details-title {
+  display: block;
+  padding: var(--space-m) var(--space-m) var(--space-m) var(--details-wrapper-padding-desktop-left); /* LTR */
+  color: inherit;
+  border-radius: var(--base-border-radius);
+  position: relative;
+}
+[dir="rtl"] .collapse-processed > .claro-details__summary .details-title {
+  padding-right: var(--details-wrapper-padding-desktop-left);
+  padding-left: var(--space-m);
+}
+
+/* Focus and hover states. */
+.collapse-processed > .claro-details__summary .details-title:focus,
+.collapse-processed > .claro-details__summary .details-title:hover {
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.collapse-processed > .claro-details__summary .details-title::after {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  transition: opacity var(--transition-duration-details-box-shadow) ease-in-out;
+  opacity: 0;
+  content: "";
+  border: 3px solid var(--color-focus);
+  border-radius: var(--base-border-radius);
+  pointer-events: none;
+}
+
+.collapse-processed > .claro-details__summary .details-title:focus::after {
+  opacity: 1;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .collapse-processed > .claro-details__summary .details-title::after {
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    border: 2px dotted;
+  }
+}

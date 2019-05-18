@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Contextual toolbar tab overrides for Claro.
+ */
+
+/**
+ * Contextual icon.
+ */
+.toolbar .toolbar-icon-edit::before {
+  content: '\e815';
+}
+
+/**
+ * Make contextual toolbar button look like a regular toolbar tab.
+ */
+.toolbar .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  font-size: 0.889rem;
+  line-height: 1rem;
+}
+[dir="rtl"] .toolbar .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+  padding-right: 2.5rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 16.5em) {
+  .toolbar .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (min-width: 36em) {
+  .toolbar .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+    padding-right: 1rem;
+    padding-left: 2.5rem;
+  }
+  [dir="rtl"] .toolbar .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+    padding-right: 2.5rem;
+    padding-left: 1rem;
+  }
+}

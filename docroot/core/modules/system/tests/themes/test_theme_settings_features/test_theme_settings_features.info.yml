@@ -1,0 +1,13 @@
+name: Test features
+type: theme
+core: 8.x
+description: 'Test theme to test theme settings with limited features.'
+features:
+  - node_user_picture
+  - comment_user_picture
+  - comment_user_verification
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

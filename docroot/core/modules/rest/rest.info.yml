@@ -1,0 +1,13 @@
+name: 'RESTful Web Services'
+type: module
+description: 'Exposes entities and other resources as RESTful web API'
+package: Web services
+version: VERSION
+core: 8.x
+dependencies:
+  - drupal:serialization
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

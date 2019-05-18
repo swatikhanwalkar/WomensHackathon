@@ -1,0 +1,27 @@
+/**
+ * @file
+ * Contextual toolbar tab fixes for Claro.
+ *
+ * @todo Check this when Settings Tray is not experimental anymore:
+ * https://www.drupal.org/node/2784591
+ * @todo remove when https://drupal.org/node/3037249 is fixed.
+ */
+
+/*
+ * Position the 'Edit/Editing' toolbar tab.
+ */
+.toolbar-oriented .toolbar-bar .contextual-toolbar-tab.toolbar-tab {
+  float: left;
+}
+[dir="rtl"] .toolbar-oriented .toolbar-bar .contextual-toolbar-tab.toolbar-tab {
+  float: right;
+}
+
+@media (min-width: 16.5em) {
+  .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab {
+    float: left;
+  }
+  [dir="rtl"] .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab {
+    float: right;
+  }
+}

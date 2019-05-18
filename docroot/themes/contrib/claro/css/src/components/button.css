@@ -1,0 +1,135 @@
+/**
+ * @file
+ * Structural styles for Claro's UI buttons
+ *
+ * Apply these classes to button elements (<button>, <input type="button" />).
+ */
+
+/**
+ * Buttons.
+ *
+ * 1. Padding widths detracted by width of the transparent borders to make
+ *    button size match with design system.
+ * 2. Transparent border is needed for high contrast mode. This has to be set to
+ *    !important to render Firefox borders with consistent width in high
+ *    contrast mode.
+ * 3. Prevent fat text in WebKit.
+ *
+ * @todo Consider moving box-sizing into base.css under a universal selector.
+ * See https://www.drupal.org/node/2124251
+ *
+ */
+
+/* Base button styles */
+.button {
+  display: inline-block;
+  padding: calc(var(--space-m) - 1px) calc(var(--space-l) - 1px); /* 1 */
+  text-align: center;
+  appearance: none;
+  background-color: var(--color-button-default-bg);
+  border: 1px solid transparent !important;  /* 2 */
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  line-height: 1rem;
+  color: var(--color-button-default-fg);
+  -webkit-font-smoothing: antialiased;  /* 3 */
+  text-decoration: none;
+  border-radius: var(--size-button-border-radius);
+  cursor: pointer;
+  margin: var(--space-m) var(--space-m) var(--space-m) 0; /* LTR */
+}
+[dir="rtl"] .button {
+  margin: var(--space-m) 0 var(--space-m) var(--space-m);
+}
+
+.button:not(:focus) {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  background-color: var(--color-button-default-bg-hover);
+  text-decoration: none;
+}
+
+.button:focus {
+  text-decoration: none;
+}
+
+.button:active {
+  background-color: var(--color-button-default-bg-active);
+}
+
+/* Common styles for small buttons */
+.no-touchevents .button--small {
+  margin: var(--space-s) var(--space-s) var(--space-s) 0; /* LTR */
+  padding: calc(var(--space-xs) - 1px) calc(var(--space-m) - 1px); /* 1 */
+  font-size: var(--font-size-xs);
+}
+[dir="rtl"].no-touchevents .button--small {
+  margin: var(--space-s) 0 var(--space-s) var(--space-s);
+}
+
+/* Primary button styles */
+.button--primary {
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-fg);
+}
+
+.button--primary:hover {
+  background-color: var(--color-button-primary-bg-hover);
+  color: var(--color-button-primary-fg);
+}
+
+.button--primary:active {
+  background-color: var(--color-button-primary-bg-active);
+}
+
+/* Danger button styles */
+.button--danger {
+  background-color: var(--color-button-danger-bg);
+  color: var(--color-button-danger-fg);
+}
+.button--danger:hover {
+  background-color: var(--color-button-danger-bg-hover);
+  color: var(--color-button-danger-fg);
+}
+.button--danger:active {
+  background-color: var(--color-button-danger-bg-active);
+}
+
+/**
+ * Disabled state styles as last.
+ *
+ * Overrides every definitions before, including variants.
+ */
+.button:disabled,
+.button.is-disabled {
+  background-color: var(--color-button-default-disabled-bg);
+  color: var(--color-button-default-disabled-fg);
+}
+
+.button--primary:disabled,
+.button--primary.is-disabled {
+  background-color: var(--color-button-primary-disabled-bg);
+  color: var(--color-button-primary-disabled-fg);
+}
+
+/* Make disabled <link> behave like a [disabled] <input> or <button> */
+.button.is-disabled {
+  pointer-events: none;
+  user-select: none;
+}
+
+/**
+ * Style a clickable/tappable element as a link. Duplicates the base style for
+ * the <a> tag, plus a reset for padding, borders and background.
+ */
+.link {
+  display: inline;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: none;
+  appearance: none;
+  text-decoration: none;
+}

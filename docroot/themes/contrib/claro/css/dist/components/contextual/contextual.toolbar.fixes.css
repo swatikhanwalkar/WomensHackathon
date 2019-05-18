@@ -1,0 +1,45 @@
+/**
+ * @file
+ * Contextual toolbar tab fixes for Claro.
+ *
+ * @todo remove when https://drupal.org/node/3035791 is fixed.
+ */
+
+.toolbar .toolbar-bar .contextual-toolbar-tab.toolbar-tab,
+[dir="rtl"] .toolbar .toolbar-bar .contextual-toolbar-tab.toolbar-tab {
+  float: none;
+}
+
+.toolbar-oriented .toolbar-bar .contextual-toolbar-tab.toolbar-tab {
+  float: right;
+}
+[dir="rtl"] .toolbar-oriented .toolbar-bar .contextual-toolbar-tab.toolbar-tab {
+  float: left;
+}
+
+/* Make the contextual button full-width for unoriented mode. */
+.toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+  width: 100%;
+  text-align: left;
+}
+[dir="rtl"] .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+  text-align: right;
+}
+
+@media (min-width: 16.5em) {
+  .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab {
+    float: right;
+  }
+  [dir="rtl"] .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab {
+    float: left;
+  }
+  .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+    width: 3rem;
+  }
+}
+
+@media only screen and (min-width: 36em) {
+  .toolbar:not(.toolbar-oriented) .toolbar-bar .contextual-toolbar-tab .toolbar-item {
+    width: auto;
+  }
+}

@@ -1,0 +1,17 @@
+name: Testing SubSubProfile
+type: profile
+description: 'Profile for testing deep profile inheritance.'
+version: VERSION
+core: 8.x
+hidden: true
+
+base profile: testing_inherited
+
+install:
+  - syslog
+  - grandchild_profile_module
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

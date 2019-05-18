@@ -1,0 +1,14 @@
+name: Activity Tracker
+type: module
+description: 'Enables tracking of recent content for users.'
+dependencies:
+  - drupal:node
+  - drupal:comment
+package: Core
+version: VERSION
+core: 8.x
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

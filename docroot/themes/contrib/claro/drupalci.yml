@@ -1,0 +1,18 @@
+build:
+  assessment:
+    validate_codebase:
+      phplint:
+      eslint:
+        halt-on-fail: true
+      phpcs:
+        halt-on-fail: true
+    testing:
+      container_command:
+        commands:
+         - "cd ${SOURCE_DIR}/themes/contrib/claro && sudo -u www-data yarn install"
+         - "cd ${SOURCE_DIR}/themes/contrib/claro && sudo -u www-data yarn run lint:css"
+      run_tests.phpunit:
+        types: 'PHPUnit-Unit'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: false

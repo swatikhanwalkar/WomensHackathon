@@ -1,0 +1,567 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Claro theme.
+ */
+
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\GeneratedLink;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Url;
+use Drupal\media\MediaForm;
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ */
+function claro_preprocess_html(&$variables) {
+  // If on a node add or edit page, add a node-layout class.
+  $path_args = explode('/', \Drupal::request()->getPathInfo());
+  if ($suggestions = theme_get_suggestions($path_args, 'page', '-')) {
+    foreach ($suggestions as $suggestion) {
+      if ($suggestion === 'page-node-edit' || strpos($suggestion, 'page-node-add') !== FALSE) {
+        $variables['attributes']['class'][] = 'node-form-layout';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu-local-tasks templates.
+ *
+ * Use preprocess hook to set #attached to child elements
+ * because they will be processed by Twig and drupal_render will
+ * be invoked.
+ */
+function claro_preprocess_menu_local_tasks(&$variables) {
+  if (!empty($variables['primary'])) {
+    $variables['primary']['#attached'] = [
+      'library' => [
+        'claro/drupal.nav-tabs',
+      ],
+    ];
+  }
+  elseif (!empty($variables['secondary'])) {
+    $variables['secondary']['#attached'] = [
+      'library' => [
+        'claro/drupal.nav-tabs',
+      ],
+    ];
+  }
+
+  foreach (Element::children($variables['primary']) as $key) {
+    $variables['primary'][$key]['#level'] = 'primary';
+  }
+  foreach (Element::children($variables['secondary']) as $key) {
+    $variables['secondary'][$key]['#level'] = 'secondary';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu-local-task templates.
+ */
+function claro_preprocess_menu_local_task(&$variables) {
+  $variables['link']['#options']['attributes']['class'][] = 'tabs__link';
+  $variables['link']['#options']['attributes']['class'][] = 'js-tabs-link';
+
+  // Ensure is-active class is set when the tab is active. The generic active
+  // link handler applies stricter comparison rules than what is necessary for
+  // tabs.
+  if (isset($variables['is_active']) && $variables['is_active'] === TRUE) {
+    $variables['link']['#options']['attributes']['class'][] = 'is-active';
+  }
+
+  if (isset($variables['element']['#level'])) {
+    $variables['level'] = $variables['element']['#level'];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu-local-task Views UI templates.
+ */
+function claro_preprocess_menu_local_task__views_ui(&$variables) {
+  // Remove 'tabs__link' without adding a new class because it couldn't be used
+  // reliably.
+  // @see https://www.drupal.org/node/3051605
+  $link_class_index = array_search('tabs__link', $variables['link']['#options']['attributes']['class']);
+  if ($link_class_index !== FALSE) {
+    unset($variables['link']['#options']['attributes']['class'][$link_class_index]);
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for node_add_list.
+ *
+ * Makes node_add_list variables compatible with entity_add_list.
+ */
+function claro_preprocess_node_add_list(&$variables) {
+  if (!empty($variables['content'])) {
+    /** @var \Drupal\node\NodeTypeInterface $type */
+    foreach ($variables['content'] as $type) {
+      $label = $type->label();
+      $description = $type->getDescription();
+      $type_id = $type->id();
+      $add_url = Url::fromRoute('node.add', ['node_type' => $type_id]);
+      $variables['bundles'][$type_id] = [
+        'label' => $label,
+        'add_link' => Link::fromTextAndUrl($label, $add_url),
+        'description' => [],
+      ];
+      if (!empty($description)) {
+        $variables['bundles'][$type_id]['description'] = [
+          '#markup' => $description,
+        ];
+      }
+    }
+    $variables['attributes']['class'][] = 'node-type-list';
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for block_content_add_list.
+ *
+ * Makes block_content_add_list variables compatible with entity_add_list.
+ */
+function claro_preprocess_block_content_add_list(&$variables) {
+  if (!empty($variables['content'])) {
+    $query = \Drupal::request()->query->all();
+    /** @var \Drupal\block_content\BlockContentTypeInterface $type */
+    foreach ($variables['content'] as $type) {
+      $label = $type->label();
+      $description = $type->getDescription();
+      $type_id = $type->id();
+      $add_url = Url::fromRoute('block_content.add_form', [
+        'block_content_type' => $type_id,
+      ], [
+        'query' => $query,
+      ]);
+      $variables['bundles'][$type_id] = [
+        'label' => $label,
+        'add_link' => Link::fromTextAndUrl($label, $add_url),
+        'description' => [],
+      ];
+
+      if (!empty($description)) {
+        $variables['bundles'][$type_id]['description'] = [
+          '#markup' => $description,
+        ];
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for entity_add_list.
+ */
+function claro_preprocess_entity_add_list(&$variables) {
+  // Remove description if empty.
+  foreach ($variables['bundles'] as $type_id => $values) {
+    if (isset($values['description']['#markup']) && empty($values['description']['#markup'])) {
+      $variables['bundles'][$type_id]['description'] = [];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_block() for block content.
+ *
+ * Disables contextual links for all blocks.
+ */
+function claro_preprocess_block(&$variables) {
+  if (isset($variables['title_suffix']['contextual_links'])) {
+    unset($variables['title_suffix']['contextual_links']);
+    unset($variables['elements']['#contextual_links']);
+
+    $variables['attributes']['class'] = array_diff($variables['attributes']['class'], ['contextual-region']);
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for admin_block.
+ */
+function claro_preprocess_admin_block(&$variables) {
+  if (!empty($variables['block']['content'])) {
+    $variables['block']['content']['#attributes']['class'][] = 'admin-list--panel';
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for admin_block.
+ */
+function claro_preprocess_admin_block_content(&$variables) {
+  foreach ($variables['content'] as &$item) {
+    $link_attributes = $item['url']->getOption('attributes') ?: [];
+    $link_attributes['class'][] = 'admin-item__link';
+    $item['url']->setOption('attributes', $link_attributes);
+    $item['link'] = Link::fromTextAndUrl($item['title'], $item['url']);
+
+    if (empty($item['description']) || empty($item['description']['#markup'])) {
+      unset($item['description']);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu-local-action templates.
+ */
+function claro_preprocess_menu_local_action(array &$variables) {
+  $variables['link']['#options']['attributes']['class'][] = 'button--primary';
+
+  // We require Modernizr's touch test for button styling.
+  $variables['#attached']['library'][] = 'core/modernizr';
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function claro_element_info_alter(&$type) {
+  // We require Modernizr for button styling.
+  if (isset($type['button'])) {
+    $type['button']['#attached']['library'][] = 'core/modernizr';
+  }
+
+  // @todo Refactor when https://www.drupal.org/node/3016343 is fixed.
+  if (isset($type['text_format'])) {
+    $type['text_format']['#pre_render'][] = '_claro_text_format_prerender';
+  }
+}
+
+/**
+ * Prerender callback for text_format elements.
+ */
+function _claro_text_format_prerender($element) {
+  // Add clearfix for filter wrapper.
+  $element['format']['#attributes']['class'][] = 'clearfix';
+  // Hide format select label visually.
+  $element['format']['format']['#title_display'] = 'invisible';
+  $element['format']['format']['#wrapper_attributes']['class'][] = 'form-item--editor-format';
+  $element['format']['format']['#attributes']['class'][] = 'form-element--small';
+  $element['format']['format']['#attributes']['class'][] = 'form-element--editor-format';
+
+  // Fix JS inconsistencies of the 'text_textarea_with_summary' widgets.
+  // @todo Remove when https://www.drupal.org/node/3016343 is fixed.
+  if (
+    !empty($element['summary']) &&
+    $element['summary']['#type'] === 'textarea'
+  ) {
+    $element['#attributes']['class'][] = 'js-text-format-wrapper';
+    $element['value']['#wrapper_attributes']['class'][] = 'js-form-type-textarea';
+  }
+  return $element;
+}
+
+/**
+ * Implements template_preprocess_filter_guidelines().
+ */
+function claro_preprocess_filter_guidelines(&$variables) {
+  // Fix filter guidelines selector issue of 'filter/drupal.filter'.
+  // @todo Remove when https://www.drupal.org/node/2881212 is fixed.
+  $variables['attributes']['class'][] = 'filter-guidelines-item';
+  $variables['attributes']['class'][] = 'filter-guidelines-' . $variables['format']->id();
+}
+
+/**
+ * Implements template_preprocess_text_format_wrapper().
+ *
+ * @todo Remove when https://www.drupal.org/node/3016343 is fixed.
+ */
+function claro_preprocess_text_format_wrapper(&$variables) {
+  $description_attributes = [];
+  if (!empty($variables['attributes']['id'])) {
+    $description_attributes['id'] = $variables['attributes']['aria-describedby'] = $variables['attributes']['id'];
+    unset($variables['attributes']['id']);
+  }
+  $variables['description_attributes'] = new Attribute($description_attributes);
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function claro_theme_registry_alter(&$theme_registry) {
+  if (!empty($theme_registry['admin_block_content'])) {
+    $theme_registry['admin_block_content']['variables']['attributes'] = [];
+  }
+
+  // @todo Remove when https://www.drupal.org/node/3016346 is fixed.
+  if (!empty($theme_registry['text_format_wrapper'])) {
+    $theme_registry['text_format_wrapper']['variables']['disabled'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_install_page().
+ */
+function claro_preprocess_install_page(&$variables) {
+  // Claro has custom styling for the install page.
+  $variables['#attached']['library'][] = 'claro/install-page';
+}
+
+/**
+ * Implements hook_preprocess_maintenance_page().
+ */
+function claro_preprocess_maintenance_page(&$variables) {
+  // Claro has custom styling for the maintenance page.
+  $variables['#attached']['library'][] = 'claro/maintenance-page';
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for \Drupal\node\NodeForm.
+ *
+ * Changes vertical tabs to container.
+ */
+function claro_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $form['#theme'] = ['node_edit_form'];
+  $form['#attached']['library'][] = 'claro/node-form';
+
+  $form['advanced']['#type'] = 'container';
+  $form['meta']['#type'] = 'container';
+  $form['meta']['#access'] = TRUE;
+  $form['meta']['changed']['#wrapper_attributes']['class'][] = 'container-inline';
+  $form['meta']['author']['#wrapper_attributes']['class'][] = 'container-inline';
+
+  $form['revision_information']['#type'] = 'container';
+  $form['revision_information']['#group'] = 'meta';
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for \Drupal\media\MediaForm.
+ */
+function claro_form_media_form_alter(&$form, FormStateInterface $form_state) {
+  // Only attach CSS from core if this form comes from Media core, and not from
+  // the contrib Media Entity 1.x branch.
+  if (\Drupal::moduleHandler()->moduleExists('media') && $form_state->getFormObject() instanceof MediaForm) {
+    // @todo Revisit after https://www.drupal.org/node/2892304 is in. It
+    // introduces a footer region to these forms which will allow for us to
+    // display a top border over the published checkbox by defining a
+    // media-edit-form.html.twig template the same way node does.
+    $form['#attached']['library'][] = 'claro/media-form';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for view_edit_form.
+ */
+function claro_form_view_edit_form_alter(&$form, FormStateInterface $form_state) {
+  // @todo remove this after https://www.drupal.org/node/3051605 has been
+  //   solved.
+  $form['displays']['top']['tabs']['#prefix'] = preg_replace('/(class="(.+\s)?)tabs(\s.+"|")/', '$1views-tabs$3', $form['displays']['top']['tabs']['#prefix']);
+  $form['displays']['top']['tabs']['#prefix'] = preg_replace('/(class="(.+\s)?)secondary(\s.+"|")/', '$1views-tabs--secondary$3', $form['displays']['top']['tabs']['#prefix']);
+
+  foreach (Element::children($form['displays']['top']['tabs']) as $tab) {
+    $form['displays']['top']['tabs'][$tab]['#theme'] = 'menu_local_task__views_ui';
+  }
+}
+
+/**
+ * Implements hook_preprocess_form_element().
+ */
+function claro_preprocess_form_element(&$variables) {
+  if (!empty($variables['element']['#errors'])) {
+    $variables['label']['#attributes']['class'][] = 'has-error';
+  }
+
+  if ($variables['disabled']) {
+    $variables['label']['#attributes']['class'][] = 'is-disabled';
+
+    if (!empty($variables['description']['attributes'])) {
+      $variables['description']['attributes']->addClass('is-disabled');
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for input.
+ */
+function claro_preprocess_input(&$variables) {
+  if (
+    !empty($variables['element']['#title_display']) &&
+    $variables['element']['#title_display'] === 'attribute' &&
+    !empty((string) $variables['element']['#title'])
+  ) {
+    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+  }
+
+  $type_api = $variables['element']['#type'];
+  $type_html = $variables['attributes']['type'];
+  $text_types_html = [
+    'text',
+    'email',
+    'tel',
+    'number',
+    'search',
+    'password',
+    'date',
+    'time',
+    'file',
+    'color',
+    'datetime-local',
+    'url',
+    'month',
+    'week',
+  ];
+
+  if (in_array($type_html, $text_types_html)) {
+    $variables['attributes']['class'][] = 'form-element';
+    $variables['attributes']['class'][] = Html::getClass('form-element--type-' . $type_html);
+    $variables['attributes']['class'][] = Html::getClass('form-element--api-' . $type_api);
+
+    if (!empty($variables['element']['#autocomplete_route_name'])) {
+      $variables['autocomplete_message'] = t('Loading…');
+    }
+  }
+
+  if (in_array($type_html, ['checkbox', 'radio'])) {
+    $variables['attributes']['class'][] = 'form-boolean';
+    $variables['attributes']['class'][] = Html::getClass('form-boolean--type-' . $type_html);
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for textarea.
+ */
+function claro_preprocess_textarea(&$variables) {
+  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = 'form-element--type-textarea';
+  $variables['attributes']['class'][] = 'form-element--api-textarea';
+}
+
+/**
+ * Implements template_preprocess_HOOK() for select.
+ */
+function claro_preprocess_select(&$variables) {
+  if (!empty($variables['element']['#title_display']) && $variables['element']['#title_display'] === 'attribute' && !empty((string) $variables['element']['#title'])) {
+    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+  }
+
+  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = $variables['element']['#multiple'] ?
+    'form-element--type-select-multiple' :
+    'form-element--type-select';
+
+  if (in_array('block-region-select', $variables['attributes']['class'])) {
+    $variables['attributes']['class'][] = 'form-element--small';
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for datetime_wrapper.
+ */
+function claro_preprocess_datetime_wrapper(&$variables) {
+  if (!empty($variables['element']['#errors'])) {
+    $variables['title_attributes']['class'][] = 'has-error';
+  }
+
+  if (!empty($variables['element']['#disabled'])) {
+    $variables['title_attributes']['class'][] = 'is-disabled';
+
+    if (!empty($variables['description_attributes'])) {
+      $variables['description_attributes']->addClass('is-disabled');
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for fieldset.
+ */
+function claro_preprocess_fieldset(&$variables) {
+  $element = $variables['element'];
+  $composite_types = ['checkboxes', 'radios'];
+
+  if (!empty($element['#type']) && in_array($element['#type'], $composite_types) && !empty($variables['element']['#children_errors'])) {
+    $variables['legend_span']['attributes']->addClass('has-error');
+  }
+
+  if (!empty($element['#disabled'])) {
+    $variables['legend_span']['attributes']->addClass('is-disabled');
+
+    if (!empty($variables['description']) && !empty($variables['description']['attributes'])) {
+      $variables['description']['attributes']->addClass('is-disabled');
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for checkboxes.
+ */
+function claro_preprocess_checkboxes(&$variables) {
+  $variables['attributes']['class'][] = 'form-boolean-group';
+}
+
+/**
+ * Implements template_preprocess_HOOK() for radios.
+ */
+function claro_preprocess_radios(&$variables) {
+  $variables['attributes']['class'][] = 'form-boolean-group';
+}
+
+/**
+ * Implements template_preprocess_HOOK() for filter_tips.
+ */
+function claro_preprocess_filter_tips(&$variables) {
+  $variables['#attached']['library'][] = 'filter/drupal.filter';
+}
+
+/**
+ * Implements template_preprocess_HOOK() for table.
+ *
+ * @todo Revisit after https://www.drupal.org/node/3025726 or
+ * https://www.drupal.org/node/1973418 is in.
+ */
+function claro_preprocess_table(&$variables) {
+  if (!empty($variables['header'])) {
+    foreach ($variables['header'] as &$header_cell) {
+      // For 8.6.x and below.
+      // @todo Remove this after 8.6.x is out of support.
+      if ($header_cell['content'] instanceof GeneratedLink) {
+        $dom_doc = Html::load($header_cell['content']->getGeneratedLink());
+        $anchors = $dom_doc->getElementsByTagName('a');
+
+        if (!empty($anchors)) {
+          foreach ($anchors as $anchor) {
+            $anchor_href = $anchor->getAttribute('href');
+            $parsed_url = UrlHelper::parse($anchor_href);
+            $query = !empty($parsed_url['query']) ? $parsed_url['query'] : [];
+
+            if (isset($query['order']) && isset($query['sort'])) {
+              $header_cell['attributes']->addClass('sortable-heading');
+            }
+          }
+        }
+      }
+
+      // For 8.7.x and above.
+      if ($header_cell['content'] instanceof Link) {
+        $query = $header_cell['content']->getUrl()->getOption('query') ?: [];
+
+        if (isset($query['order']) && isset($query['sort'])) {
+          $header_cell['attributes']->addClass('sortable-heading');
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for views_view_table.
+ *
+ * @todo Revisit after https://www.drupal.org/node/3025726 or
+ * https://www.drupal.org/node/1973418 is in.
+ */
+function claro_preprocess_views_view_table(&$variables) {
+  if (!empty($variables['header'])) {
+    foreach ($variables['header'] as &$header_cell) {
+      if (!empty($header_cell['url'])) {
+        $parsed_url = UrlHelper::parse($header_cell['url']);
+        $query = !empty($parsed_url['query']) ? $parsed_url['query'] : [];
+
+        if (isset($query['order']) && isset($query['sort'])) {
+          $header_cell['attributes']->addClass('sortable-heading');
+        }
+      }
+    }
+  }
+}

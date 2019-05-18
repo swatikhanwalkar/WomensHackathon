@@ -1,0 +1,23 @@
+/**
+ * @file
+ * Toolbar variables.
+ */
+
+:root { /* 2px */ /* 2px */
+
+  /* ToolBar tray */ /* Light gray with 0.8 opacity */ /* 1px */
+
+  /* ToolBar tabs */ /* (2 * vertical padding) + line-height, ~ 40px */ /* (2 * vertical padding) + line-height, ~ 40px */
+
+  /* ToolBar menu links (in tray) */ /* Line height var(--space-s) is too small for longer menu links. */
+
+  /**
+   * ToolBar icons
+   */
+  /* Item with an icon */ /* (2 * var(--space-m)) + var(--space-xs) */ /* (3 * var(--space-m)) */ /* padding-start + space-xs */ /* padding-start + (2 * space-xs) */
+  /* Icon pseudo */ /* one space-m logical width and 2 * --space-xs extra space (for each side) */ /* --toolbar-icon-item--padding-start - --toolbar-icon--width */
+
+  /* ToolBar orientation toggle */
+
+  /* ToolBar handle — submenu toggle */
+}

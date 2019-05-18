@@ -1,0 +1,14 @@
+name: 'Hook menu tests'
+type: module
+description: 'Support module for menu hook testing.'
+package: Testing
+version: VERSION
+core: 8.x
+dependencies:
+  - drupal:test_page_test
+  - drupal:menu_ui
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

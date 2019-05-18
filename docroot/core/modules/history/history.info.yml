@@ -1,0 +1,13 @@
+name: History
+type: module
+description: 'Records which user has read which content.'
+package: Core
+version: VERSION
+core: 8.x
+dependencies:
+  - drupal:node
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

@@ -1,0 +1,6 @@
+drupal/lightning_core:
+  url: ../lightning-core
+  version_dev: 4.x-dev
+
+drupal/lightning_api:
+  version_dev: 4.x-dev

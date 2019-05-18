@@ -1,0 +1,11 @@
+name: 'Quick Edit test'
+type: module
+description: 'Support module for the Quick Edit module tests.'
+core: 8.x
+package: Testing
+version: VERSION
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

@@ -1,0 +1,4 @@
+.layout-region-node-main > .form-wrapper:first-of-type .form-item,
+.layout-region-node-main > .form-wrapper:first-of-type .form-item > label {
+  margin-top: 0;
+}

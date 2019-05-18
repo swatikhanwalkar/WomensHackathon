@@ -1,0 +1,50 @@
+***************
+*** 6,19 ****
+    --color-white: #fff;
+    --color-text: #222330;
+    --color-whitesmoke: #f3f4f9;
+    /* Secondary. */
+    --color-lightgray: #d8d9e0;
+    --color-grayblue: #8e929c;
+    --color-oldsilver: #82828c;
+    --color-davysgrey: #545560;
+    --color-maximumred: #d72222;
+    --color-sunglow: #ffd23f;
+    --color-celadongreen: #228572;
+    /* Variations. */
+    --color-absolutezero-hover: #0036b1;
+    --color-absolutezero-active: #00309e;
+--- 6,22 ----
+    --color-white: #fff;
+    --color-text: #222330;
+    --color-whitesmoke: #f3f4f9;
++   --color-whitesmoke-o-40: rgba(243, 244, 249, 0.4);
+    /* Secondary. */
+    --color-lightgray: #d8d9e0;
++   --color-lightgray-o-80: rgba(216, 217, 224, 0.8);
+    --color-grayblue: #8e929c;
+    --color-oldsilver: #82828c;
+    --color-davysgrey: #545560;
+    --color-maximumred: #d72222;
+    --color-sunglow: #ffd23f;
+    --color-celadongreen: #228572;
++   --color-green-focus: #26a769;
+    /* Variations. */
+    --color-absolutezero-hover: #0036b1;
+    --color-absolutezero-active: #00309e;
+***************
+*** 61,66 ****
+     */
+    --speed-transition: 0.2s;
+    --transition: all 200ms ease-out;
+    /*
+     * Inputs.
+     */
+--- 64,70 ----
+     */
+    --speed-transition: 0.2s;
+    --transition: all 200ms ease-out;
++   --basic-border-radius: 0.125rem; /* (1/8)em ~ 2px */
+    /*
+     * Inputs.
+     */

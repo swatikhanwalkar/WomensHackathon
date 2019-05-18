@@ -1,0 +1,10 @@
+name: 'BigPipe test theme'
+type: theme
+description: 'Theme for testing BigPipe edge cases.'
+version: VERSION
+core: 8.x
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

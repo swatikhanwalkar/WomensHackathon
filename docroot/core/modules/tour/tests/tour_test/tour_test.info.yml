@@ -1,0 +1,13 @@
+name: Tour module tests
+type: module
+description: Tests module for tour module.
+package: Testing
+version: VERSION
+core: 8.x
+dependencies:
+  - drupal:tour
+
+# Information added by drush on 2019-05-08
+version: '8.7.1'
+project: 'drupal'
+datestamp: 1557331255

@@ -1,0 +1,13 @@
+name: Simple OAuth Extras
+type: module
+description: OAuth2 extra access grants.
+# core: 8.x
+package: Authentication
+dependencies:
+  - simple_oauth:simple_oauth
+
+# Information added by Drupal.org packaging script on 2019-04-30
+version: '8.x-3.15'
+core: '8.x'
+project: 'simple_oauth'
+datestamp: 1556659989
