@@ -1048,6 +1048,256 @@
         ]
     },
     {
+        "name": "drupal/block_field",
+        "version": "1.0.0-alpha8",
+        "version_normalized": "1.0.0.0-alpha8",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/block_field.git",
+            "reference": "8.x-1.0-alpha8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/block_field-8.x-1.0-alpha8.zip",
+            "reference": "8.x-1.0-alpha8",
+            "shasum": "faffdd869263c3103f5c6a7a8d71ac440df1115f"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-alpha8",
+                "datestamp": "1536732480",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Project has not opted into security advisory coverage!"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "acbramley",
+                "homepage": "https://www.drupal.org/user/1036766"
+            },
+            {
+                "name": "fenstrat",
+                "homepage": "https://www.drupal.org/user/362649"
+            },
+            {
+                "name": "jrockowitz",
+                "homepage": "https://www.drupal.org/user/371407"
+            },
+            {
+                "name": "michaellander",
+                "homepage": "https://www.drupal.org/user/636494"
+            }
+        ],
+        "description": "Provides a field that allows a content entity to create and configure custom block instances.",
+        "homepage": "https://www.drupal.org/project/block_field",
+        "support": {
+            "source": "https://git.drupalcode.org/project/block_field"
+        }
+    },
+    {
+        "name": "drupal/bootstrap",
+        "version": "3.19.0",
+        "version_normalized": "3.19.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/bootstrap.git",
+            "reference": "8.x-3.19"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.19.zip",
+            "reference": "8.x-3.19",
+            "shasum": "6d000a1a470ac831185a46cb003d0c7870ac2a3d"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-theme",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.19",
+                "datestamp": "1557526081",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Mark Carver (markcarver)",
+                "homepage": "https://www.drupal.org/u/markcarver",
+                "role": "Maintainer"
+            },
+            {
+                "name": "John McCormick (neardark)",
+                "homepage": "https://www.drupal.org/u/neardark",
+                "role": "Co-maintainer"
+            },
+            {
+                "name": "Fabiano Sant'Ana (wundo)",
+                "homepage": "https://www.drupal.org/u/wundo",
+                "role": "Co-maintainer"
+            }
+        ],
+        "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
+        "homepage": "https://www.drupal.org/project/bootstrap",
+        "support": {
+            "source": "http://cgit.drupalcode.org/bootstrap",
+            "docs": "https://drupal-bootstrap.org",
+            "issues": "https://www.drupal.org/project/issues/bootstrap",
+            "irc": "irc://irc.freenode.org/drupal-bootstrap"
+        }
+    },
+    {
+        "name": "drupal/bootstrap_layouts",
+        "version": "5.1.0",
+        "version_normalized": "5.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/bootstrap_layouts.git",
+            "reference": "8.x-5.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/bootstrap_layouts-8.x-5.1.zip",
+            "reference": "8.x-5.1",
+            "shasum": "b304b1c9d0ea30646e6dff7aa32405a21a11d49f"
+        },
+        "require": {
+            "drupal/core": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-5.x": "5.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-5.1",
+                "datestamp": "1516598286",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "darol100",
+                "homepage": "https://www.drupal.org/user/2667123"
+            },
+            {
+                "name": "hctom",
+                "homepage": "https://www.drupal.org/user/112790"
+            },
+            {
+                "name": "markcarver",
+                "homepage": "https://www.drupal.org/user/501638"
+            }
+        ],
+        "description": "This module is going to generate layouts with Bootstrap grid system.",
+        "homepage": "https://www.drupal.org/project/bootstrap_layouts",
+        "support": {
+            "source": "https://git.drupalcode.org/project/bootstrap_layouts"
+        }
+    },
+    {
+        "name": "drupal/charts",
+        "version": "3.0.0-beta3",
+        "version_normalized": "3.0.0.0-beta3",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/charts.git",
+            "reference": "8.x-3.0-beta3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/charts-8.x-3.0-beta3.zip",
+            "reference": "8.x-3.0-beta3",
+            "shasum": "a803f85257463108c5aace4d41272ce9a5cf14d3"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.0-beta3",
+                "datestamp": "1553289780",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Beta releases are not covered by Drupal security advisories."
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Pierre.Vriens",
+                "homepage": "https://www.drupal.org/user/1689304"
+            },
+            {
+                "name": "andileco",
+                "homepage": "https://www.drupal.org/user/2054544"
+            },
+            {
+                "name": "brmassa",
+                "homepage": "https://www.drupal.org/user/67164"
+            },
+            {
+                "name": "kenorb",
+                "homepage": "https://www.drupal.org/user/191974"
+            },
+            {
+                "name": "quicksketch",
+                "homepage": "https://www.drupal.org/user/35821"
+            },
+            {
+                "name": "rashad612",
+                "homepage": "https://www.drupal.org/user/319686"
+            }
+        ],
+        "description": "A charting API for Drupal that provides chart elements and integration with Views.",
+        "homepage": "https://www.drupal.org/project/charts",
+        "support": {
+            "source": "https://git.drupalcode.org/project/charts"
+        }
+    },
+    {
         "name": "drupal/coder",
         "version": "8.3.1",
         "version_normalized": "8.3.1.0",
@@ -1085,6 +1335,583 @@
             "phpcs",
             "standards"
         ]
+    },
+    {
+        "name": "drupal/ds",
+        "version": "3.3.0",
+        "version_normalized": "3.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/ds.git",
+            "reference": "8.x-3.3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/ds-8.x-3.3.zip",
+            "reference": "8.x-3.3",
+            "shasum": "0f586997908d464c123b1ab8817cf13363666459"
+        },
+        "require": {
+            "drupal/core": "^8.6"
+        },
+        "require-dev": {
+            "drupal/devel": "*",
+            "drupal/field_group": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.3",
+                "datestamp": "1551355085",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Bram Goffings",
+                "homepage": "https://www.drupal.org/user/172527",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Kristof De Jaeger",
+                "homepage": "http://realize.be/",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Brecht Ceyssens",
+                "homepage": "https://www.drupal.org/user/591438",
+                "role": "Maintainer"
+            },
+            {
+                "name": "swentel",
+                "homepage": "https://www.drupal.org/user/107403"
+            }
+        ],
+        "description": "Extend the display options for every entity type.",
+        "homepage": "https://www.drupal.org/project/ds",
+        "keywords": [
+            "drupal",
+            "layout",
+            "php"
+        ],
+        "support": {
+            "source": "http://git.drupal.org/project/ds.git",
+            "issues": "https://www.drupal.org/project/issues/ds",
+            "irc": "irc://irc.freenode.org/drupal-contribute"
+        }
+    },
+    {
+        "name": "drupal/easychart",
+        "version": "3.4.0",
+        "version_normalized": "3.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/easychart.git",
+            "reference": "8.x-3.4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/easychart-8.x-3.4.zip",
+            "reference": "8.x-3.4",
+            "shasum": "6ec1848fd12b1515c16d841cc87a071883fa476c"
+        },
+        "require": {
+            "drupal/core": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-3.x": "3.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-3.4",
+                "datestamp": "1475594996",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jan-Yves Vanhaverbeke",
+                "homepage": "https://www.drupal.org/user/1823074",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Thomas Daem",
+                "homepage": "https://www.drupal.org/user/591438",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Kristof De Jaeger",
+                "homepage": "http://realize.be/",
+                "role": "Maintainer"
+            },
+            {
+                "name": "thomas_rz",
+                "homepage": "https://www.drupal.org/user/1142210"
+            }
+        ],
+        "description": "A visual editor for the world's best web charting tool: Highcharts.",
+        "homepage": "https://www.drupal.org/project/easychart",
+        "keywords": [
+            "Highcharts",
+            "chart",
+            "drupal"
+        ],
+        "support": {
+            "source": "http://git.drupal.org/project/easychart.git",
+            "issues": "https://www.drupal.org/project/issues/easychart",
+            "irc": "irc://irc.freenode.org/drupal-contribute"
+        }
+    },
+    {
+        "name": "drupal/entity_reference_revisions",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/entity_reference_revisions.git",
+            "reference": "8.x-1.6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.6.zip",
+            "reference": "8.x-1.6",
+            "shasum": "82d515de04d3a75fb677ed82241a6aff3f54ab47"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "require-dev": {
+            "drupal/diff": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.6",
+                "datestamp": "1539588781",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Frans",
+                "homepage": "https://www.drupal.org/user/514222"
+            },
+            {
+                "name": "jeroen.b",
+                "homepage": "https://www.drupal.org/user/1853532"
+            },
+            {
+                "name": "miro_dietiker",
+                "homepage": "https://www.drupal.org/user/227761"
+            }
+        ],
+        "description": "Adds a Entity Reference field type with revision support.",
+        "homepage": "https://www.drupal.org/project/entity_reference_revisions",
+        "support": {
+            "source": "https://git.drupalcode.org/project/entity_reference_revisions"
+        }
+    },
+    {
+        "name": "drupal/paragraphs",
+        "version": "1.8.0",
+        "version_normalized": "1.8.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/paragraphs.git",
+            "reference": "8.x-1.8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.8.zip",
+            "reference": "8.x-1.8",
+            "shasum": "a40849233de8403f5488c20c5b81ab4877373f65"
+        },
+        "require": {
+            "drupal/core": "~8",
+            "drupal/entity_reference_revisions": "~1.3"
+        },
+        "require-dev": {
+            "drupal/block_field": "~1.0",
+            "drupal/ctools": "3.x-dev",
+            "drupal/diff": "~1.0",
+            "drupal/entity_browser": "2.x-dev",
+            "drupal/entity_usage": "2.x-dev",
+            "drupal/field_group": "~1.0",
+            "drupal/inline_entity_form": "~1.0",
+            "drupal/paragraphs-paragraphs_library": "*",
+            "drupal/replicate": "~1.0",
+            "drupal/search_api": "~1.0",
+            "drupal/search_api_db": "*"
+        },
+        "suggest": {
+            "drupal/entity_browser": "Recommended for an improved user experience when using the Paragraphs library module"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.8",
+                "datestamp": "1553618281",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Berdir",
+                "homepage": "https://www.drupal.org/user/214652"
+            },
+            {
+                "name": "Frans",
+                "homepage": "https://www.drupal.org/user/514222"
+            },
+            {
+                "name": "Primsi",
+                "homepage": "https://www.drupal.org/user/282629"
+            },
+            {
+                "name": "jeroen.b",
+                "homepage": "https://www.drupal.org/user/1853532"
+            },
+            {
+                "name": "miro_dietiker",
+                "homepage": "https://www.drupal.org/user/227761"
+            }
+        ],
+        "description": "Enables the creation of Paragraphs entities.",
+        "homepage": "https://www.drupal.org/project/paragraphs",
+        "support": {
+            "source": "https://git.drupalcode.org/project/paragraphs"
+        }
+    },
+    {
+        "name": "drupal/select2",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/select2.git",
+            "reference": "8.x-1.1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/select2-8.x-1.1.zip",
+            "reference": "8.x-1.1",
+            "shasum": "cb450b9535bcb9010bce96a5b65ac49722f09f78"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "require-dev": {
+            "drupal/facets": "^1.1",
+            "drupal/form_options_attributes": "^1.0",
+            "drupal/search_api": "^1.10"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.1",
+                "datestamp": "1542788880",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Christian Fritsch",
+                "homepage": "https://www.drupal.org/user/1133806",
+                "email": "christian.fritsch@burda.com"
+            },
+            {
+                "name": "chr.fritsch",
+                "homepage": "https://www.drupal.org/user/2103716"
+            },
+            {
+                "name": "oushen",
+                "homepage": "https://www.drupal.org/user/1200780"
+            },
+            {
+                "name": "thunderbot",
+                "homepage": "https://www.drupal.org/user/3511180"
+            }
+        ],
+        "description": "Integration with the select2 JavaScript library.",
+        "homepage": "https://www.drupal.org/project/select2",
+        "support": {
+            "source": "https://git.drupalcode.org/project/select2"
+        }
+    },
+    {
+        "name": "drupal/webform",
+        "version": "5.2.0",
+        "version_normalized": "5.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/webform.git",
+            "reference": "8.x-5.2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.2.zip",
+            "reference": "8.x-5.2",
+            "shasum": "44e67c377e156f7f8d6f26bba43240dfa1885637"
+        },
+        "require": {
+            "drupal/core": "*"
+        },
+        "require-dev": {
+            "drupal/address": "~1.4",
+            "drupal/captcha": "~1.0",
+            "drupal/chosen": "~2.6",
+            "drupal/devel": "*",
+            "drupal/jsonapi": "~2.0",
+            "drupal/mailsystem": "~4.0",
+            "drupal/select2": "~1.1",
+            "drupal/telephone_validation": "^2.2",
+            "drupal/token": "~1.3",
+            "drupal/webform_access": "*",
+            "drupal/webform_node": "*",
+            "drupal/webform_scheduled_email": "*",
+            "drupal/webform_ui": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-5.x": "5.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-5.2",
+                "datestamp": "1557418583",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            },
+            "drush": {
+                "services": {
+                    "drush.services.yml": "^9"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jacob Rockowitz (jrockowitz)",
+                "homepage": "https://www.drupal.org/u/jrockowitz",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Alexander Trotsenko (bucefal91)",
+                "homepage": "https://www.drupal.org/u/bucefal91",
+                "role": "Co-maintainer"
+            },
+            {
+                "name": "bucefal91",
+                "homepage": "https://www.drupal.org/user/504128"
+            },
+            {
+                "name": "fenstrat",
+                "homepage": "https://www.drupal.org/user/362649"
+            },
+            {
+                "name": "jrockowitz",
+                "homepage": "https://www.drupal.org/user/371407"
+            },
+            {
+                "name": "podarok",
+                "homepage": "https://www.drupal.org/user/116002"
+            },
+            {
+                "name": "quicksketch",
+                "homepage": "https://www.drupal.org/user/35821"
+            },
+            {
+                "name": "sanchiz",
+                "homepage": "https://www.drupal.org/user/1671246"
+            },
+            {
+                "name": "tedbow",
+                "homepage": "https://www.drupal.org/user/240860"
+            },
+            {
+                "name": "torotil",
+                "homepage": "https://www.drupal.org/user/865256"
+            }
+        ],
+        "description": "Enables the creation of webforms and questionnaires.",
+        "homepage": "https://drupal.org/project/webform",
+        "support": {
+            "source": "http://cgit.drupalcode.org/webform",
+            "error": "Invalid dependency: \"telephone_validation/telephone_validation\" is an unknown drupal 8 package name",
+            "issues": "https://www.drupal.org/project/issues/webform?version=8.x",
+            "docs": "https://www.drupal.org/docs/8/modules/webform",
+            "forum": "https://drupal.stackexchange.com/questions/tagged/webform"
+        }
+    },
+    {
+        "name": "drupal/webform_analysis",
+        "version": "1.0.0-beta7",
+        "version_normalized": "1.0.0.0-beta7",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/webform_analysis.git",
+            "reference": "8.x-1.0-beta7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/webform_analysis-8.x-1.0-beta7.zip",
+            "reference": "8.x-1.0-beta7",
+            "shasum": "218ee42c0d3d5c62bb29e0e68134188dc2a16c85"
+        },
+        "require": {
+            "drupal/core": "~8.0",
+            "drupal/webform": "*"
+        },
+        "require-dev": {
+            "drupal/webform_node": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.0-beta7",
+                "datestamp": "1540735084",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Project has not opted into security advisory coverage!"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "lbaran",
+                "homepage": "https://www.drupal.org/user/3368098"
+            }
+        ],
+        "description": "Enables to obtain statistics on the results of form submissions.",
+        "homepage": "https://www.drupal.org/project/webform_analysis",
+        "support": {
+            "source": "https://git.drupalcode.org/project/webform_analysis"
+        }
+    },
+    {
+        "name": "drupal/webform_views",
+        "version": "5.0.0-alpha7",
+        "version_normalized": "5.0.0.0-alpha7",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/webform_views.git",
+            "reference": "8.x-5.0-alpha7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/webform_views-8.x-5.0-alpha7.zip",
+            "reference": "8.x-5.0-alpha7",
+            "shasum": "6c9bb51735a106729dcfa08372e987ebf95d38f2"
+        },
+        "require": {
+            "drupal/core": "*",
+            "drupal/webform": "*"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-5.x": "5.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-5.0-alpha7",
+                "datestamp": "1557288185",
+                "security-coverage": {
+                    "status": "not-covered",
+                    "message": "Alpha releases are not covered by Drupal security advisories."
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "bucefal91",
+                "homepage": "https://www.drupal.org/user/504128"
+            },
+            {
+                "name": "jrockowitz",
+                "homepage": "https://www.drupal.org/user/371407"
+            },
+            {
+                "name": "ws.agency",
+                "homepage": "https://www.drupal.org/user/2851415"
+            }
+        ],
+        "description": "Webform integration with views.",
+        "homepage": "https://www.drupal.org/project/webform_views",
+        "support": {
+            "source": "https://git.drupalcode.org/project/webform_views"
+        }
     },
     {
         "name": "easyrdf/easyrdf",

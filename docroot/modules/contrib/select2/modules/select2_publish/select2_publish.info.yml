@@ -1,0 +1,14 @@
+name: Select2 Publish
+type: module
+description: Indicates the status of referenced entities.
+package: User interface
+# core: '8.x'
+dependencies:
+  - select2:select2
+  - form_options_attributes:form_options_attributes
+
+# Information added by Drupal.org packaging script on 2018-11-21
+version: '8.x-1.1'
+core: '8.x'
+project: 'select2'
+datestamp: 1542788885
