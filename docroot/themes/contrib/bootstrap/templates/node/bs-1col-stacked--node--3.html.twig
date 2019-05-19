@@ -1,0 +1,63 @@
+
+{#
+/**
+ * @file
+ * Bootstrap Layouts: "1 Column (stacked)" template.
+ *
+ * Available layout variables:
+ * - wrapper: Wrapper element for the layout container.
+ * - attributes: Wrapper attributes for the layout container.
+ *
+ * Available region variables:
+ * - top
+ * - main
+ * - bottom
+ *
+ * Each region variable contains the following properties:
+ * - wrapper: The HTML element to use to wrap this region.
+ * - attributes: The HTML attributes to use on the wrapper for this region.
+ * - content: The content to go inside the wrapper for this region.
+ */
+#}
+<{{ wrapper }}{{ attributes }}>
+  {{ title_suffix.contextual_links }}
+
+  {% if top.content %}
+  <{{ top.wrapper }}{{ top.attributes }}>
+ <div class="jumbotron jumbotron-fluid">
+     <div class="container">
+         <h1 class="display-3">Engage</h1>
+         <p class="lead">We are the first step to open government , providing the citizens an opportunity to have their say</p>
+         <hr class="my-2">
+        
+         <p class="lead">
+             <a class="btn btn-primary btn-lg" href="/consultation" role="button">View all consultations</a>
+         </p>
+     </div>
+ </div>
+
+
+
+
+  </{{ top.wrapper }}>
+  {% endif %}
+
+  {% if main.content %}
+  <{{ main.wrapper }}{{ main.attributes }}>
+   
+<div class="well well-lg">
+
+ <p class="lead">Have your say on variety of government projects and initiative, choose what you think is right and guide the governements in making the right decisions
+</p>
+</div>
+
+  </{{ main.wrapper }}>
+  {% endif %}
+
+  {% if bottom.content %}
+  <{{ bottom.wrapper }}{{ bottom.attributes }}>
+    {{ bottom.content }}
+  </{{ bottom.wrapper }}>
+  {% endif %}
+
+</{{ wrapper }}>

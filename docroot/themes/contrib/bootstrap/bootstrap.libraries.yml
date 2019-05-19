@@ -9,7 +9,9 @@ attributes:
 # If sub-theme uses a starterkit like LESS or SASS, then it should extend this
 # library to add in the compiled CSS and JavaScript sources.
 framework:
-  css: {}
+  css:
+    theme:
+      css/style.css: {}
   js: {}
   dependencies:
     - core/jquery
