@@ -1,7 +1,7 @@
 # Digital Engagement Platform
 The platform is built in Drupal 8 to support the culture of open government. The platform conceptualises how can citizens voice can be heard and they can have their say in major policy decisions
 
-## Perquisites
+## Prerequisites
 1. A http server, Mysql and PHP.
 2. You can use Apache or Nginx stacks (commonly available as LAMP, LEMP etc for linux )
 
